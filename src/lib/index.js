@@ -1,4 +1,2 @@
-import Wrapper from './components/Wrapper';
-import Section from './components/Section';
-
-export { Wrapper, Section };
+export { default as Wrapper } from './components/Wrapper';
+export { default as Section } from './components/Section';
