@@ -16,7 +16,11 @@ const isStyleTag = [
 const propsToStyle = (breakpoints, props) => {
   console.log('propsToStyle', breakpoints, props);
   let styleString = '';
-  let breakpointsObj = breakpoints || {};
+  let breakpointsObj = breakpoints || {
+    mb: 0,
+    tb: 768,
+    dt: 1024,
+  };
   let propObj = props || {};
   Object.keys(breakpointsObj).map((key, index) => {
     styleString += `@media (min-width: ${breakpoints[key]}px) {`;
