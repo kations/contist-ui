@@ -10,16 +10,19 @@ const isStyleTag = [
   'top',
   'backgroundColor',
   'zIndex',
+  'padding',
 ];
 
 const propsToStyle = (breakpoints, props) => {
+  console.log('propsToStyle', breakpoints, props);
   let styleString = '';
-  Object.keys(breakpoints).map((key, index) => {
+  let breakpointsObj = breakpoints || {};
+  let propObj = props || {};
+  Object.keys(breakpointsObj).map((key, index) => {
     styleString += `@media (min-width: ${breakpoints[key]}px) {`;
-    Object.keys(props).map((propsKey, index) => {
-      //console.log(isStyleTag.indexOf(propsKey) > -1, key, propsKey);
+    Object.keys(propObj).map((propsKey, index) => {
       if (isStyleTag.indexOf(propsKey) > -1) {
-        if (typeof props[propsKey] === 'string') {
+        if (typeof propObj[propsKey] === 'string') {
           styleString += `${propsKey.replace(/([a-z])([A-Z])/g, '$1-$2')}: ${
             props[propsKey]
           };`;
