@@ -13,17 +13,20 @@ const isStyleTag = [
   'padding',
 ];
 
-const propsToStyle = (breakpoints, props) => {
-  console.log('propsToStyle', breakpoints, props);
+const propsToStyle = props => {
+  console.log('propsToStyle', props);
   let styleString = '';
-  let breakpointsObj = breakpoints || {
-    mb: 0,
-    tb: 768,
-    dt: 1024,
-  };
+  let breakpointsObj =
+    props.theme && props.theme.breakpoints
+      ? props.theme.breakpoints
+      : {
+          mb: 0,
+          tb: 768,
+          dt: 1024,
+        };
   let propObj = props || {};
   Object.keys(breakpointsObj).map((key, index) => {
-    styleString += `@media (min-width: ${breakpoints[key]}px) {`;
+    styleString += `@media (min-width: ${breakpointsObj[key]}px) {`;
     Object.keys(propObj).map((propsKey, index) => {
       if (isStyleTag.indexOf(propsKey) > -1) {
         if (typeof propObj[propsKey] === 'string') {

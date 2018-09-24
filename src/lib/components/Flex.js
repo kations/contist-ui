@@ -5,7 +5,7 @@ import propsToStyle from '../utils/propsToStyle';
 
 const Flex = styled.div`
   display: flex;
-  ${props => propsToStyle(props.theme.breakpoints, props)};
+  ${props => propsToStyle(props)};
   ${props => console.log('flexprops', props)};
 `;
 

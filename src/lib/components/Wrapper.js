@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   width: 85%;
   max-width: ${props => props.theme.globals.wrapperWidth || '1000px'};
   margin: 0 auto;
-  ${props => propsToStyle(props.theme.breakpoints, props)};
+  ${props => propsToStyle(props)};
 `;
 
 Wrapper.propTypes = {

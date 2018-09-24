@@ -6,7 +6,7 @@ import propsToStyle from '../utils/propsToStyle';
 const Toolbar = styled.div`
   width: ${props => (props.vertical ? '60px' : '100vw')};
   height: ${props => (props.vertical ? '100vh' : '60px')};
-  ${props => propsToStyle(props.theme.breakpoints, props)};
+  ${props => propsToStyle(props)};
 `;
 
 Toolbar.propTypes = {
