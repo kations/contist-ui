@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react';
 import { Wrapper, Section, Flex, Toolbar, Reset } from '../lib';
 import { ThemeProvider } from 'styled-components';
-console.log(Wrapper);
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  ${Reset}
+`;
 
 const App = () => (
   <ThemeProvider
@@ -29,7 +33,7 @@ const App = () => (
     }}
   >
     <Fragment>
-      <Reset />
+      <GlobalStyle />
       <Toolbar position="sticky" top="0px" />
       <Section>
         <Wrapper maxWidth={'700px'}>

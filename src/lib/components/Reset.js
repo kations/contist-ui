@@ -1,6 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
-
-export default createGlobalStyle`
+const Reset = `
   html {
       box-sizing: border-box;
   }
@@ -72,3 +70,5 @@ export default createGlobalStyle`
       display: block;
   }
 `;
+
+export default Reset;
