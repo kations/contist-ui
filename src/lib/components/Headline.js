@@ -22,23 +22,34 @@ import styled from 'styled-components';
 import { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 
+import { propsToStyle, styleProps } from '../utils';
+
 const Headline = styled.h1`
-  color: #000;
   max-width: 100%;
   letter-spacing: 1px;
   word-spacing: 2px;
+  ${props => propsToStyle(props)};
 `;
 
-export default ({ as, children, className, style, charPoses }) => (
-  <Headline as={as} style={style} className={className}>
-    {charPoses ? (
+Headline.propTypes = {
+  ...styleProps,
+};
+
+export default props => (
+  <Headline
+    as={props.as}
+    style={props.style}
+    className={props.className}
+    {...props}
+  >
+    {props.charPoses ? (
       <PoseGroup animateOnMount preEnterPose="exit" flipMove={false}>
-        <SplitText key={'dsgdf'} charPoses={charPoses}>
-          {children}
+        <SplitText key={'dsgdf'} charPoses={props.charPoses}>
+          {props.children}
         </SplitText>
       </PoseGroup>
     ) : (
-      children
+      props.children
     )}
   </Headline>
 );
