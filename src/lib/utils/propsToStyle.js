@@ -1,20 +1,6 @@
-const isStyleTag = [
-  'left',
-  'alignItems',
-  'justifyContent',
-  'flexDirection',
-  'width',
-  'height',
-  'border',
-  'position',
-  'top',
-  'backgroundColor',
-  'zIndex',
-  'padding',
-];
+import { styleProps } from './';
 
 const propsToStyle = props => {
-  console.log('propsToStyle', props);
   let styleString = '';
   let breakpointsObj =
     props.theme && props.theme.breakpoints
@@ -28,7 +14,7 @@ const propsToStyle = props => {
   Object.keys(breakpointsObj).map((key, index) => {
     styleString += `@media (min-width: ${breakpointsObj[key]}px) {`;
     Object.keys(propObj).map((propsKey, index) => {
-      if (isStyleTag.indexOf(propsKey) > -1) {
+      if (styleProps[propsKey] !== undefined) {
         if (typeof propObj[propsKey] === 'string') {
           styleString += `${propsKey.replace(/([a-z])([A-Z])/g, '$1-$2')}: ${
             props[propsKey]

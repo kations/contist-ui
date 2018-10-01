@@ -26,6 +26,22 @@ const Reset = `
       margin: 0;
       font-size: 1rem;
       font-weight: 400;
+      line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.125;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.25;
   }
 
   a {

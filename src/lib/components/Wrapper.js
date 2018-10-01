@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import propsToStyle from '../utils/propsToStyle';
+import { propsToStyle, styleProps } from '../utils';
 
 const Wrapper = styled.div`
   width: 85%;
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
 `;
 
 Wrapper.propTypes = {
-  maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.string]),
+  ...styleProps,
 };
 
 export default Wrapper;

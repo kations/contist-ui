@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import propsToStyle from '../utils/propsToStyle';
+import { propsToStyle, styleProps } from '../utils';
 
 const Toolbar = styled.div`
   width: ${props => (props.vertical ? '60px' : '100vw')};
@@ -10,7 +9,7 @@ const Toolbar = styled.div`
 `;
 
 Toolbar.propTypes = {
-  maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.string]),
+  ...styleProps,
 };
 
 Toolbar.defaultProps = {
