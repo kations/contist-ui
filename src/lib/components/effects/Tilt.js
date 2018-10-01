@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import { propsToStyle, styleProps } from '../utils';
+import { propsToStyle, styleProps } from '../../utils';
 
 const TiltLayer = styled.div`
   ${props => propsToStyle(props)};

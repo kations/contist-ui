@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { propsToStyle, styleProps } from '../utils';
+import { propsToStyle, styleProps } from '../../utils';
 
 const ripple = keyframes`
   100% {
@@ -46,7 +46,6 @@ class Ripple extends React.Component {
   }
   componentDidMount() {
     let $ripple = this.refs.ripple;
-    console.log('$ripple', $ripple.parentElement.className);
     $ripple.parentElement.setAttribute('style', 'position:relative;');
     $ripple.parentElement.addEventListener('mouseup', this.handleClick);
     $ripple.parentElement.addEventListener('touchend', this.handleClick);
@@ -60,7 +59,6 @@ class Ripple extends React.Component {
       // Prevent Component duplicates do ripple effect at the same time
       time: Date.now(),
     };
-    console.log('cursorPos', cursorPos);
     this.setState({ cursorPos: cursorPos });
     this.handleRipple(cursorPos);
   };

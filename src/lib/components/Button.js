@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { propsToStyle, styleProps } from '../utils';
 import Progress from './Progress';
-import Ripple from './Ripple';
+import Ripple from './effects/Ripple';
 
 const buttonSizes = {
   large: ' 1rem 2rem',

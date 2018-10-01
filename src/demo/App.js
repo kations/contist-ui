@@ -15,6 +15,7 @@ import {
   Tilt,
   Ripple,
   Fixed,
+  Animate,
 } from '../lib';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
@@ -98,8 +99,9 @@ const App = () => (
             <Progress size={30} />
             <Ripple color="#000" />
           </Flex>
-
-          <Button>Ripple</Button>
+          <Animate>
+            <Button>Ripple</Button>
+          </Animate>
           <Tilt
             options={{ max: 25, scale: 1.05 }}
             backgroundColor="rgb(240,240,240)"
@@ -213,6 +215,9 @@ const App = () => (
                 <Button type="tertiary" size="medium">
                   submit
                 </Button>
+                <Animate>
+                  <Button>Ripple</Button>
+                </Animate>
               </Fragment>
             )}
           </FormState>
