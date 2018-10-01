@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/kations/contist-ui#readme",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react-pose": "^3.3.6",
+    "react-pose-text": "^3.1.0"
+  },
   "devDependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -68,7 +71,9 @@
   "peerDependencies": {
     "react": ">=0.14",
     "react-dom": ">=0.14",
-    "styled-components": "^4.0.0"
+    "styled-components": "^4.0.0",
+    "react-pose": "^3.0.0",
+    "react-pose-text": "^3.1.0"
   },
   "jest": {
     "collectCoverageFrom": [

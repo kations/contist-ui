@@ -1,3 +1,8 @@
+import posed, { PoseGroup } from 'react-pose';
+import SplitText from 'react-pose-text';
+
+export { posed, PoseGroup, SplitText };
+
 export { default as Wrapper } from './components/Wrapper';
 export { default as Section } from './components/Section';
 export { default as Toolbar } from './components/Toolbar';
