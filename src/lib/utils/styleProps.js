@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const styleProps = {
+  /** The description for myProp */
   alignContent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,

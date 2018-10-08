@@ -26,14 +26,14 @@ const dash = strokeDashoffset => keyframes`
 `;
 
 const Svg = styled.svg`
-  &.animate {
+  &.animate-loading {
     animation: ${props => rotate(props.strokeDashoffset)}
       ${props => props.loadingDuration} linear infinite;
   }
 
   circle {
     fill: none;
-    &.animate {
+    &.animate-loading {
       animation: ${props => dash(props.strokeDashoffset)}
         ${props => props.loadingDuration} ease-in-out infinite;
     }
@@ -43,7 +43,7 @@ const Svg = styled.svg`
 const Text = styled.text`
   text-anchor: middle;
   dominant-baseline: central;
-  fill: ${props => props.theme.colors.primary};
+  fill: ${props => props.theme.colors.dark};
   font-size: 5rem;
   font-size: ${props => props.size};
 `;
@@ -130,7 +130,7 @@ class Progress extends Component {
         viewBox="-25 -25 400 400"
         strokeDashoffset={strokeDashoffset}
         loadingDuration={loadingDuration}
-        className={progress === undefined ? 'animate' : 'progress'}
+        className={progress === undefined ? 'animate-loading' : 'progress'}
         style={style}
       >
         <BackgroundCircle cx="175" cy="175" r="175" strokeWidth={lineWidth} />
@@ -142,7 +142,8 @@ class Progress extends Component {
           strokeWidth={lineWidth}
           strokeLinecap={strokeLinecap}
           onTransitionEnd={onAnimationEnd}
-          className={progress === undefined ? 'animate' : 'progress'}
+          loading={progress === undefined}
+          className={progress === undefined ? 'animate-loading' : 'progress'}
           animationDuration={animationDuration}
           strokeDashoffset={strokeDashoffset}
         />

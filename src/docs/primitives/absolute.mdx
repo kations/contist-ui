@@ -1,0 +1,21 @@
+---
+name: Absolute
+menu: Primitives
+---
+import { Playground, PropsTable } from 'docz'
+import { Absolute, Box } from '../../lib'
+
+# Absolute
+
+Hello, I'm a mdx file!
+
+<Playground style={{height: '100px'}}>
+  <Absolute top={0} right={0}>
+    <Box background="#CCC" height="100px" width="100px" />
+  </Absolute>
+  <Absolute top={0} left={0}>
+    <Box background="#CCC" height="100px" width="100px" />
+  </Absolute>
+</Playground>
+
+<PropsTable of={Absolute} />

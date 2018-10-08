@@ -1,5 +1,12 @@
 import { styleProps } from './';
 
+const toString = value => {
+  if (typeof value === 'number') {
+    value = value.toString() + 'px';
+  }
+  return value;
+};
+
 const propsToStyle = props => {
   let styleString = '';
   let breakpointsObj =
@@ -15,14 +22,19 @@ const propsToStyle = props => {
     styleString += `@media (min-width: ${breakpointsObj[key]}px) {`;
     Object.keys(propObj).map((propsKey, index) => {
       if (styleProps[propsKey] !== undefined) {
-        if (typeof propObj[propsKey] === 'string') {
-          styleString += `${propsKey.replace(/([a-z])([A-Z])/g, '$1-$2')}: ${
-            props[propsKey]
-          };`;
+        if (
+          typeof propObj[propsKey] === 'string' ||
+          typeof propObj[propsKey] === 'number'
+        ) {
+          styleString += `${propsKey.replace(
+            /([a-z])([A-Z])/g,
+            '$1-$2'
+          )}: ${toString(props[propsKey])};`;
         } else {
-          styleString += `${propsKey.replace(/([a-z])([A-Z])/g, '$1-$2')}: ${
-            props[propsKey][key]
-          };`;
+          styleString += `${propsKey.replace(
+            /([a-z])([A-Z])/g,
+            '$1-$2'
+          )}: ${toString(props[propsKey][key])};`;
         }
       }
     });

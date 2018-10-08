@@ -1,42 +1,19 @@
-// import styled from 'styled-components';
-//
-// import { propsToStyle, styleProps } from '../utils';
-//
-// const Headline = styled.h1`
-//   ${props => propsToStyle(props)};
-// `;
-//
-// Headline.propTypes = {
-//   ...styleProps,
-// };
-//
-//
-// Headline.defaultProps = {
-//   maxWidth: '1200px',
-// };
-//
-// export default Headline;
-
 import React from 'react';
 import styled from 'styled-components';
 import { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 
-import { propsToStyle, styleProps } from '../utils';
+import { propsToStyle, styleProps } from '../../utils';
+import Box from '../primitives/Box';
 
-const Headline = styled.h1`
+const StyledHeadline = styled(Box)`
   max-width: 100%;
   letter-spacing: 1px;
   word-spacing: 2px;
-  ${props => propsToStyle(props)};
 `;
 
-Headline.propTypes = {
-  ...styleProps,
-};
-
-export default props => (
-  <Headline
+const Headline = props => (
+  <StyledHeadline
     as={props.as}
     style={props.style}
     className={props.className}
@@ -51,5 +28,21 @@ export default props => (
     ) : (
       props.children
     )}
-  </Headline>
+  </StyledHeadline>
 );
+
+Headline.defaultProps = {
+  as: 'h1',
+  charPoses: {
+    enter: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      delay: ({ charIndex }) => charIndex * 15,
+      transition: { duration: 350 },
+    },
+    exit: { opacity: 0, scale: 0, y: 50 },
+  },
+};
+
+export default Headline;

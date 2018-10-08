@@ -47,6 +47,9 @@ class Ripple extends React.Component {
   componentDidMount() {
     let $ripple = this.refs.ripple;
     $ripple.parentElement.setAttribute('style', 'position:relative;');
+    if (this.props.hidden) {
+      $ripple.parentElement.setAttribute('style', 'overflow:hidden;');
+    }
     $ripple.parentElement.addEventListener('mouseup', this.handleClick);
     $ripple.parentElement.addEventListener('touchend', this.handleClick);
   }

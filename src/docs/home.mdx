@@ -1,0 +1,27 @@
+---
+name: Avatar
+menu: UI
+---
+import { Playground, PropsTable } from 'docz'
+import { Avatar, InlineFlex, Flex, Box } from '../lib'
+
+# Avatar
+
+Hello, I'm a mdx file!
+
+<Playground>
+  <Flex justifyContent="space-between">
+    <Flex>
+        <Avatar />
+        <Avatar marginLeft="10px" borderRadius={0} char="UX" />
+        <Avatar marginLeft="10px" borderRadius={0} src="https://images.unsplash.com/photo-1538425679099-774ec988c02a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60fac4b206709b25675d64ee0163a7ea&auto=format&fit=crop&w=900&q=60" />
+        <Avatar marginLeft="10px" char="UX" src="https://images.unsplash.com/photo-1538425679099-774ec988c02a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60fac4b206709b25675d64ee0163a7ea&auto=format&fit=crop&w=900&q=60" />
+    </Flex>
+    <Flex>
+        <Avatar boxShadow="0 0 0 2px #FFF" />
+        <Avatar marginLeft="-5px" boxShadow="0 0 0 2px #FFF" char="UX" />
+        <Avatar marginLeft="-5px" boxShadow="0 0 0 2px #FFF" src="https://images.unsplash.com/photo-1538425679099-774ec988c02a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60fac4b206709b25675d64ee0163a7ea&auto=format&fit=crop&w=900&q=60" />
+        <Avatar marginLeft="-5px" boxShadow="0 0 0 2px #FFF" char="UX" src="https://images.unsplash.com/photo-1538425679099-774ec988c02a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=60fac4b206709b25675d64ee0163a7ea&auto=format&fit=crop&w=900&q=60" />
+    </Flex>
+  </Flex>
+</Playground>

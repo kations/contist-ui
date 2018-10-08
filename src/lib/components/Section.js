@@ -5,7 +5,7 @@ import propsToStyle from '../utils/propsToStyle';
 export const Section = styled.section`
   position: relative;
   width: 100%;
-  padding: 10rem 0;
+  padding: 5rem 0;
 
   ${props => propsToStyle(props)};
 `;
