@@ -33,8 +33,9 @@ const Headline = props => (
               delay={wordIndex * 20}
               duration={650}
               easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-              onVisible
-              stayVisible
+              onVisible={props.onVisible}
+              isVisible={props.isVisible && !props.onVisible}
+              stayVisible={props.stayVisible}
             >
               <span
                 style={
@@ -56,7 +57,10 @@ const Headline = props => (
 
 Headline.defaultProps = {
   as: "h1",
-  animated: false
+  animated: false,
+  isVisible: true,
+  onVisible: false,
+  stayVisible: true
 };
 
 export default Headline;

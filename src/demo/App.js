@@ -168,7 +168,7 @@ class App extends Component {
                   marginBottom="50px"
                   className="Tilt-inner"
                 >
-                  <Headline as="h1" animated>
+                  <Headline as="h1" animated onVisible>
                     Build amazing e commerce products
                   </Headline>
                   <Ripple color="#000" />

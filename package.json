@@ -7,9 +7,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "demo": "node scripts/demo.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "test": "node scripts/test.js --env=jsdom"
   },
   "now": {
     "alias": "contist-dev",

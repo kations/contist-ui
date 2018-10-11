@@ -51,7 +51,7 @@ class Animate extends Component {
 
     this.state = {
       active: false,
-      done: false
+      wasActive: false
     };
   }
 
@@ -59,10 +59,10 @@ class Animate extends Component {
     if (isVisible && !this.state.active) {
       this.setState({ active: true });
       setTimeout(() => {
-        this.setState({ done: true });
+        this.setState({ wasActive: true });
       }, 1000);
     } else if (!this.props.stayVisible) {
-      this.setState({ active: false, done: false });
+      this.setState({ active: false });
     }
   };
 
@@ -100,7 +100,10 @@ class Animate extends Component {
           partialVisibility={partialVisibility}
         >
           {({ isVisible }) => (
-            <AniWrapper className={visible ? "show" : "hide"} {...this.props}>
+            <AniWrapper
+              className={visible ? "show" : this.state.wasActive ? "hide" : ""}
+              {...this.props}
+            >
               {children}
             </AniWrapper>
           )}
