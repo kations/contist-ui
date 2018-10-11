@@ -1,19 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { propsToStyle, styleProps } from '../../utils';
+import { propsToStyle, styleProps } from "../../utils";
 
-import DefaultTheme from '../DefaultTheme';
+import DefaultTheme from "../DefaultTheme";
 
 const Box = styled.div`
-  ${props => propsToStyle(props)};
+  ${p => propsToStyle(p, p.theme)};
 `;
 
 Box.propTypes = {
-  ...styleProps,
+  ...styleProps
 };
 
 Box.defaultProps = {
-  theme: DefaultTheme,
+  theme: DefaultTheme
 };
 
 export default Box;

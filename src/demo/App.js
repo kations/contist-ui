@@ -28,19 +28,8 @@ import { ThemeProvider } from "styled-components";
 import styled, { createGlobalStyle } from "styled-components";
 import PropTypes from "prop-types";
 import { parseToRgb, darken, lighten, setLightness } from "polished";
-import comps from "./comps";
+import { ui, primitives } from "./comps";
 console.log("Flex", Avatar);
-
-const charPoses = {
-  enter: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    delay: ({ charIndex }) => charIndex * 15,
-    transition: { duration: 350 }
-  },
-  exit: { opacity: 0, scale: 0, y: 50 }
-};
 
 const GlobalStyle = createGlobalStyle`
   ${Reset}
@@ -65,9 +54,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-weight: 400;
   }
+
+  h3 {
+    text-transform: uppercase;
+  }
 `;
 
 const components = {
+  Box,
   Fragment,
   Flex,
   Avatar,
@@ -75,7 +69,8 @@ const components = {
   Overlay,
   Button,
   Grid,
-  State
+  State,
+  Progress
 };
 
 const ComponentItem = styled(Box)``;
@@ -87,6 +82,8 @@ const ComponentPreview = styled(Flex)`
   background: #fff;
   box-shadow: 0 10px 20px rgba(91, 107, 174, 0.1);
   border-radius: 10px;
+  height: 200px;
+  margin-bottom: 10px;
 `;
 
 class App extends Component {
@@ -94,49 +91,71 @@ class App extends Component {
     super(props);
 
     this.state = {
-      preview: undefined
+      preview: undefined,
+      modal: false
     };
   }
 
   render() {
+    var compItem = (comp, index) => (
+      <Animate
+        from={{ transform: "translate3d(5px, 50px, 0)", opacity: 0 }}
+        delay={index * 100}
+        onVisible
+        stayVisible
+      >
+        <ComponentItem
+          onClick={() =>
+            this.setState({
+              preview: comp.preview,
+              comp: comp.name,
+              modal: true
+            })
+          }
+        >
+          <ComponentPreview>{comp.comp}</ComponentPreview>
+          {comp.name}
+        </ComponentItem>
+      </Animate>
+    );
     return (
       <ThemeProvider theme={DefaultTheme}>
         <Fragment>
           <GlobalStyle />
           <Toolbar position="sticky" top="0px" />
-          <Section>
-            <Wrapper maxWidth={"700px"}>
-              <Grid>
-                {comps.map(comp => (
-                  <ComponentItem
-                    onClick={() => this.setState({ preview: comp.preview })}
-                  >
-                    <ComponentPreview>{comp.comp}</ComponentPreview>
-                    {comp.name}
-                  </ComponentItem>
-                ))}
-              </Grid>
 
-              {this.state.preview ? (
+          <Section>
+            <Wrapper maxWidth={"1000px"}>
+              <Animate offsetY="100px" isVisible>
+                <Headline as="h3" marginBottom={20} marginTop={50} animated>
+                  PRIMITIVES
+                </Headline>
+              </Animate>
+              <Grid>
+                {primitives.map((comp, index) => compItem(comp, index))}
+              </Grid>
+              <Animate offsetY="100px" isVisible>
+                <Headline as="h3" marginBottom={20} marginTop={50} animated>
+                  UI Elements
+                </Headline>
+              </Animate>
+              <Grid>{ui.map((comp, index) => compItem(comp, index))}</Grid>
+
+              <Overlay
+                visible={this.state.modal}
+                handleClose={() => this.setState({ modal: false })}
+                contentStyle={{ width: "90vw", maxWidth: "1000px" }}
+                backdropStyle={{ paddingTop: 20 }}
+                noBg
+              >
                 <Playground
-                  title="Avatar"
-                  comp={Avatar}
+                  title={this.state.comp}
+                  comp={components[this.state.comp]}
                   components={components}
-                  preview={this.state.preview}
+                  preview={this.state.preview || ""}
                 />
-              ) : null}
-              <Avatar
-                display="inline-flex"
-                src="https://contist.s3.amazonaws.com/MRMHSGCbznosp2Jpr/best-ware-ideas-plans-unblocked-designs-windows-designer-qonser-with-elevation-blueprint-for-floor-top-photos-luxury-escape-exterior-plan-nadu-lots-mac-pro-design-minecraft-web-mod-728x546.jpg"
-              />
-              <Avatar char="TS" marginLeft={20} display="inline-flex" />
-              <Flex justifyContent="center" marginBottom="50px">
-                <Progress size={200} />
-                <Progress size={130} progress={60} />
-                <Progress size={80} progress={30} />
-                <Progress size={30} />
-                <Ripple color="#000" />
-              </Flex>
+              </Overlay>
+
               <Animate isVisible>
                 <Button invert>Ripple</Button>
               </Animate>
@@ -144,18 +163,16 @@ class App extends Component {
                 options={{ max: 25, scale: 1.05 }}
                 padding="20px 20px 5px 20px"
               >
-                <Animate offsetY="100px" isVisible>
-                  <Flex
-                    justifyContent="center"
-                    marginBottom="50px"
-                    className="Tilt-inner"
-                  >
-                    <Headline as="h1" charPoses={charPoses}>
-                      Build amazing e commerce products
-                    </Headline>
-                    <Ripple color="#000" />
-                  </Flex>
-                </Animate>
+                <Flex
+                  justifyContent="center"
+                  marginBottom="50px"
+                  className="Tilt-inner"
+                >
+                  <Headline as="h1" animated>
+                    Build amazing e commerce products
+                  </Headline>
+                  <Ripple color="#000" />
+                </Flex>
               </Tilt>
 
               <FormState
@@ -275,15 +292,17 @@ class App extends Component {
                       submit
                     </Button>
                     <Animate
-                      isVisible
-                      opacity="1"
-                      offsetX={"-10px"}
-                      mode="infinite"
+                      onVisible
+                      from={{ transform: "translate3d(-10px, 0, 0)" }}
+                      to={{ transform: "translate3d(10px, 0, 0)" }}
+                      transform="translate3d(-10px, 0, 0)"
+                      mode="forwards"
                       duration={100}
+                      count={5}
                     >
                       <Button>Ripple</Button>
                     </Animate>
-                    <Animate onVisible>
+                    <Animate transform="translate3d(0, 30px, 0)" onVisible>
                       <Button>Ripple</Button>
                     </Animate>
                   </Fragment>

@@ -6,7 +6,7 @@ import Fixed from "../primitives/Fixed";
 import Box from "../primitives/Box";
 
 import Portal from "../helper/Portal";
-import DelayUnmount from "../helper/DelayUnmount";
+import Delay from "../helper/Delay";
 
 import Animate from "../effects/Animate";
 import { getColor } from "../../utils";
@@ -28,13 +28,13 @@ const Backdrop = styled(Fixed)`
 `;
 
 const OverlayContent = styled(Box)`
-  background: #fff;
-  box-shadow: 0 10px 20px rgba(91, 107, 174, 0.1);
   min-width: 300px;
   max-width: 100vw;
-  padding: 30px;
   z-index: 600;
   margin: auto;
+  padding: ${p => (p.noBg ? "0px" : "30px")};
+  background: ${p => (p.noBg ? "transparent" : "#FFF")};
+  box-shadow: ${p => (p.noBg ? "none" : "0 10px 20px rgba(91, 107, 174, 0.1)")};
   ${p => (p.full || p.fullHeight ? "height: 100vh;" : "")};
   ${p => (p.full || p.fullWidth ? "width: 100vw;" : "")};
 `;
@@ -51,13 +51,11 @@ class Overlay extends Component {
   render() {
     const {
       contentStyle,
-      style,
+      backdropStyle,
       visible,
       handleClose,
       position,
-      full,
-      offsetY,
-      offsetX,
+      from,
       children
     } = this.props;
 
@@ -68,18 +66,20 @@ class Overlay extends Component {
 
     console.log("in");
     return (
-      <DelayUnmount delay={300} mounted={visible}>
+      <Delay unmount={300} mounted={visible}>
         <Portal>
           <Animate isVisible={visible}>
             <Backdrop
               {...this.props}
               onClick={handleClose}
               justifyContent={justifyContent[position]}
+              style={backdropStyle}
             >
-              <Animate offsetY={offsetY} offsetX={offsetX} isVisible={visible}>
+              <Animate from={from} isVisible={visible}>
                 <OverlayContent
                   onClick={e => e.stopPropagation()}
                   {...this.props}
+                  style={contentStyle}
                 >
                   {children}
                 </OverlayContent>
@@ -87,12 +87,13 @@ class Overlay extends Component {
             </Backdrop>
           </Animate>
         </Portal>
-      </DelayUnmount>
+      </Delay>
     );
   }
 }
 
 Overlay.defaultProps = {
+  from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
   position: "center",
   offsetY: "100px"
 };

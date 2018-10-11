@@ -25,17 +25,24 @@ import React, { Component, Fragment } from "react";
 // export default DelayUnmount;
 //
 //
-class DelayUnmount extends React.Component {
+class Delay extends React.Component {
   state = {
-    shouldRender: this.props.mounted
+    shouldRender: false
   };
 
+  componentDidMount() {
+    const { mounted, unmount, mount } = this.props;
+    if (mounted) {
+      setTimeout(() => this.setState({ shouldRender: true }), mount);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    const { mounted, delay } = this.props;
+    const { mounted, unmount, mount } = this.props;
     if (mounted === true && nextProps.mounted === false) {
-      setTimeout(() => this.setState({ shouldRender: false }), delay);
+      setTimeout(() => this.setState({ shouldRender: false }), unmount);
     } else if (mounted === false && nextProps.mounted === true) {
-      this.setState({ shouldRender: true });
+      setTimeout(() => this.setState({ shouldRender: true }), mount);
     }
   }
 
@@ -50,4 +57,9 @@ class DelayUnmount extends React.Component {
   }
 }
 
-export default DelayUnmount;
+Delay.defaultProps = {
+  mount: 1,
+  unmount: 1
+};
+
+export default Delay;

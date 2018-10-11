@@ -1,8 +1,8 @@
-import posed, { PoseGroup } from "react-pose";
-import SplitText from "react-pose-text";
+import { parseToRgb, darken, lighten, setLightness } from "polished";
+
 const VisibilitySensor = require("react-visibility-sensor");
 
-export { posed, PoseGroup, SplitText, VisibilitySensor };
+export { VisibilitySensor, parseToRgb, darken, lighten, setLightness };
 
 export { default as Wrapper } from "./components/Wrapper";
 export { default as Section } from "./components/Section";
@@ -23,6 +23,7 @@ export { default as DefaultTheme } from "./components/DefaultTheme";
 
 //helper
 export { default as State } from "./components/helper/State";
+export { default as Delay } from "./components/helper/Delay";
 
 //primitives
 export { default as Flex } from "./components/primitives/Flex";

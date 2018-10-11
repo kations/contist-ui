@@ -19,11 +19,16 @@ class State extends React.Component {
   };
 
   render() {
-    return this.props.children({
+    const { children, render } = this.props;
+    const props = {
       setState: this.handleSetState,
       resetState: this.resetState,
       state: this.state
-    });
+    };
+    if (render) {
+      return render(props);
+    }
+    return children(props);
   }
 }
 

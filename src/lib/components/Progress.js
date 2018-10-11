@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { Component } from "react";
+import styled, { keyframes } from "styled-components";
 
 const rotate = strokeDashoffset => keyframes`
   0% {
@@ -55,7 +55,7 @@ const BackgroundCircle = styled.circle`
 const ProgressCircle = styled.circle`
   stroke: ${props => props.theme.colors.primary};
   stroke-dasharray: 1100;
-  stroke-dashoffset: ${props => props.strokeDashoffset || '110'};
+  stroke-dashoffset: ${props => props.strokeDashoffset || "110"};
   transition: ${props =>
     `stroke-dashoffset ${props.animationDuration} ease-out`};
 `;
@@ -68,12 +68,18 @@ class Progress extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0,
+      progress: 0
     };
     if (props.progress) {
       setTimeout(() => {
         this.setState({ progress: props.progress });
       }, 200);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.progress !== this.props.progress) {
+      this.setState({ progress: nextProps.progress });
     }
   }
 
@@ -85,14 +91,14 @@ class Progress extends Component {
       textColor,
       textStyle,
       percentSpacing,
-      showPercentageSymbol,
+      showPercentageSymbol
     } = this.props;
     if (!showPercentage || !progress) return;
 
     return (
       <Text size={size} style={textStyle} x={radius} y={radius}>
         {progress}
-        {showPercentageSymbol ? '%' : ''}
+        {showPercentageSymbol ? "%" : ""}
       </Text>
     );
   }
@@ -112,14 +118,14 @@ class Progress extends Component {
       responsive,
       onAnimationEnd,
       style,
-      className,
+      className
     } = this.props;
     const strokeDashoffset = getOffset(this.state.progress || 0);
     const transition = animate
       ? `stroke-dashoffset ${animationDuration} ease-out`
       : null;
-    const strokeLinecap = roundedStroke ? 'round' : 'butt';
-    const svgSize = responsive ? '100%' : size;
+    const strokeLinecap = roundedStroke ? "round" : "butt";
+    const svgSize = responsive ? "100%" : size;
 
     console.log(progress);
 
@@ -130,7 +136,7 @@ class Progress extends Component {
         viewBox="-25 -25 400 400"
         strokeDashoffset={strokeDashoffset}
         loadingDuration={loadingDuration}
-        className={progress === undefined ? 'animate-loading' : 'progress'}
+        className={progress === undefined ? "animate-loading" : "progress"}
         style={style}
       >
         <BackgroundCircle cx="175" cy="175" r="175" strokeWidth={lineWidth} />
@@ -143,7 +149,7 @@ class Progress extends Component {
           strokeLinecap={strokeLinecap}
           onTransitionEnd={onAnimationEnd}
           loading={progress === undefined}
-          className={progress === undefined ? 'animate-loading' : 'progress'}
+          className={progress === undefined ? "animate-loading" : "progress"}
           animationDuration={animationDuration}
           strokeDashoffset={strokeDashoffset}
         />
@@ -155,14 +161,14 @@ class Progress extends Component {
 
 Progress.defaultProps = {
   animate: true,
-  animationDuration: '1s',
-  loadingDuration: '3s',
+  animationDuration: "1s",
+  loadingDuration: "3s",
   showPercentage: true,
   showPercentageSymbol: true,
   size: 100,
   lineWidth: 30,
   percentSpacing: 10,
-  roundedStroke: true,
+  roundedStroke: true
 };
 
 export default Progress;

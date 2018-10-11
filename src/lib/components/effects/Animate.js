@@ -1,26 +1,25 @@
 import React, { Component, Fragment } from "react";
 import styled, { keyframes } from "styled-components";
+
+import { propsToStyle } from "../../utils";
+
 const VisibilitySensor = require("react-visibility-sensor");
 
 const rotate = p => keyframes`
   0% {
-    opacity: ${p.opacity};
-    transform: translate3d(${p.offsetX}, ${p.offsetY}, 0) scale(${p.scale});
+    ${propsToStyle(p.from, p.theme, "noQuery")};
   }
   100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    ${propsToStyle(p.to, p.theme, "noQuery")};
   }
 `;
 
 const out = p => keyframes`
   0% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    ${propsToStyle(p.to, p.theme, "noQuery")};
   }
   100% {
-    opacity: ${p.opacity};
-    transform: translate3d(${p.offsetX}, ${p.offsetY}, 0) scale(${p.scale});
+    ${propsToStyle(p.from, p.theme, "noQuery")};
   }
 `;
 
@@ -29,10 +28,15 @@ const AniWrapper = styled(({ children, className }) =>
     className: `${children.props.className || ""} ${className}`.trim()
   })
 )`
+  ${p => propsToStyle(p.from, p.theme)};
+
   &.show {
-    animation: ${p => rotate(p)} ${p => p.duration}ms
-      cubic-bezier(0.645, 0.045, 0.355, 1) ${p => p.mode};
+    animation: ${p => rotate(p)} ${p => p.duration}ms ${p => p.easing}
+      ${p => p.mode};
     animation-direction: alternate;
+    animation-delay: ${p => p.delay}ms;
+    animation-play-state: ${p => (p.playing ? "running" : "paused")};
+    animation-iteration-count: ${p => p.count};
   }
 
   &.hide {
@@ -93,6 +97,7 @@ class Animate extends Component {
         <VisibilitySensor
           active={(!visible && stayVisible) || !stayVisible}
           onChange={this.onChange}
+          partialVisibility={partialVisibility}
         >
           {({ isVisible }) => (
             <AniWrapper className={visible ? "show" : "hide"} {...this.props}>
@@ -110,32 +115,22 @@ class Animate extends Component {
         </AniWrapper>
       </Fragment>
     );
-
-    return (
-      <Fragment>
-        <VisibilitySensor
-          key={"list"}
-          onChange={this.onChange}
-          partialVisibility={partialVisibility}
-          offset={offset}
-        >
-          <AniWrapper className={visible ? "show" : "hide"} {...this.props}>
-            {children}
-          </AniWrapper>
-        </VisibilitySensor>
-      </Fragment>
-    );
   }
 }
 
 Animate.defaultProps = {
-  offsetY: "0px",
-  offsetX: "0px",
+  from: { opacity: 0, transform: "translate3d(0, 0, 0)" },
+  to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+  easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
+  transform: "translate3d(0,0,0)",
+  count: 1,
   opacity: "0",
-  scale: "1",
+  delay: "0",
   mode: "forwards",
   duration: 300,
-  partialVisibility: true
+  partialVisibility: true,
+  offset: 0,
+  playing: true
 };
 
 export default Animate;
