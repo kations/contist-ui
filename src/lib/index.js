@@ -17,6 +17,7 @@ export { default as Headline } from "./components/ui/Headline";
 export { default as Overlay } from "./components/ui/Overlay";
 export { default as Icon } from "./components/ui/Icon";
 export { default as Tabs } from "./components/ui/Tabs";
+export { default as Card } from "./components/ui/Card";
 
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";

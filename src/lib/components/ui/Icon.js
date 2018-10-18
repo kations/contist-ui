@@ -49,17 +49,17 @@ const IconStyle = styled(Box)`
   &.burger {
     span {
       &:nth-child(1) {
-        transform: translate3d(0, -${p => p.size / 2.9}px, 0);
-        width: ${p => p.size * 0.75}px;
+        transform: translate3d(0, -${p => p.size / 4}px, 0);
+        width: ${p => p.size * 0.85}px;
       }
 
       &:nth-child(2) {
-        width: ${p => p.size * 0.75}px;
+        width: ${p => p.size * 0.85}px;
       }
 
       &:nth-child(3) {
-        transform: translate3d(0, ${p => p.size / 2.9}px, 0);
-        width: ${p => p.size * 0.75}px;
+        transform: translate3d(0, ${p => p.size / 4}px, 0);
+        width: ${p => p.size * 0.85}px;
       }
     }
   }

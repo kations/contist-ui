@@ -28,7 +28,6 @@ const Headline = props => (
     {props.animated
       ? parseText(props.children, "char").map((word, wordIndex) => (
           <Fragment>
-            {console.log(word)}
             <span style={{ display: "inline-block" }}>
               {word.map((char, charIndex) => (
                 <Fragment>

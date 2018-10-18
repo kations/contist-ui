@@ -24,7 +24,8 @@ import {
   State,
   Icon,
   setLightness,
-  Tabs
+  Tabs,
+  Card
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -83,19 +84,6 @@ const components = {
   Tabs
 };
 
-const ComponentItem = styled(Box)``;
-
-const ComponentPreview = styled(Flex)`
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background: #fff;
-  box-shadow: 0 10px 20px rgba(91, 107, 174, 0.1);
-  border-radius: 10px;
-  height: 200px;
-  margin-bottom: 10px;
-`;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -114,7 +102,7 @@ class App extends Component {
         onVisible
         stayVisible
       >
-        <ComponentItem
+        <Box
           onClick={() =>
             this.setState({
               preview: comp.preview,
@@ -124,10 +112,19 @@ class App extends Component {
           }
         >
           <Tilt options={{ max: 15, scale: 1.025 }}>
-            <ComponentPreview>{comp.comp}</ComponentPreview>
+            <Flex
+              as={Card}
+              alignItems="center"
+              justifyContent="center"
+              borderRadius="10px"
+              height="200px"
+              padding="30px"
+            >
+              {comp.comp}
+            </Flex>
           </Tilt>
           {comp.name}
-        </ComponentItem>
+        </Box>
       </Animate>
     );
     return (
@@ -157,6 +154,7 @@ class App extends Component {
 
           <Section>
             <Wrapper>
+              <Card margin="50px 0">test</Card>
               <Tabs
                 options={["vegetarisch", "vegan"]}
                 onChange={(index, value) => console.log(index, value)}

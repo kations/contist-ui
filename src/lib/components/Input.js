@@ -18,15 +18,15 @@ export const Input = styled.input`
   outline: none;
   margin: 0;
 
-  ${props => propsToStyle(props)};
+  ${p => propsToStyle(p, p.theme)};
 `;
 
 export const Label = styled.label`
   font-size: 0.8rem;
   text-tranform: uppercase;
-  color: ${props => props.theme.colors.primary};
+  color: ${p => p.theme.colors.primary};
 
-  ${props => propsToStyle(props)};
+  ${p => propsToStyle(p, p.theme)};
 `;
 
 export const Fieldset = styled.fieldset`
@@ -35,7 +35,7 @@ export const Fieldset = styled.fieldset`
 
 export const Form = styled.form`
   width: 100%;
-  ${props => propsToStyle(props)};
+  ${p => propsToStyle(p, p.theme)};
 `;
 
 export const FormGroup = styled.div`
@@ -43,30 +43,28 @@ export const FormGroup = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  ${props => propsToStyle(props)};
   overflow: hidden;
   justify-content: center;
   background: rgb(245, 245, 245);
   padding: 2px;
-  ${props => props.radius && `border-radius: ${props.radius}px`};
+  ${p => p.radius && `border-radius: ${p.radius}px`};
+  ${p => propsToStyle(p, p.theme)};
 
   label {
-    position: ${props => (props.floating ? "absolute" : "relative")};
-    left: ${props => (props.floating ? "0px" : "auto")};
-    top: ${props => (props.floating ? "0px" : "auto")};
-    font-size: ${props => (props.floating ? "1rem" : "")};
+    position: ${p => (p.floating ? "absolute" : "relative")};
+    left: ${p => (p.floating ? "0px" : "auto")};
+    top: ${p => (p.floating ? "0px" : "auto")};
+    font-size: ${p => (p.floating ? "1rem" : "")};
     z-index: 2;
     padding: 10px ${paddingVertical} 0 ${paddingVertical};
     transition: all 300ms ease-in-out;
-    ${props =>
-      props.error && `color: ${props.theme.colors.error || "#f44336"}`};
-    ${props =>
-      props.radius &&
-      `border-radius: ${props.radius - 2}px ${props.radius - 2}px 0 0`};
+    ${p => p.error && `color: ${p.theme.colors.error || "#f44336"}`};
+    ${p =>
+      p.radius && `border-radius: ${p.radius - 2}px ${p.radius - 2}px 0 0`};
   }
 
-  ${props =>
-    props.floating
+  ${p =>
+    p.floating
       ? `
 
       input,
@@ -105,12 +103,11 @@ export const FormGroup = styled.div`
   textarea {
     position: relative;
     z-index: 1;
-    padding: ${props => (props.floating ? "24px" : "6px")} ${paddingVertical}
-      10px ${paddingVertical};
-    color: ${props => props.theme.colors.dark};
-    ${props =>
-      props.radius &&
-      `border-radius: 0 0 ${props.radius - 2}px ${props.radius - 2}px`};
+    padding: ${p => (p.floating ? "24px" : "6px")} ${paddingVertical} 10px
+      ${paddingVertical};
+    color: ${p => p.theme.colors.dark};
+    ${p =>
+      p.radius && `border-radius: 0 0 ${p.radius - 2}px ${p.radius - 2}px`};
   }
 
   input:disabled,
@@ -125,7 +122,7 @@ export const FormGroup = styled.div`
       padding: 13px ${paddingVertical};
       font-size: 1.2rem;
       position: relative;
-      color: ${props => props.theme.colors.dark};
+      color: ${p => p.theme.colors.dark};
 
       &:before {
         content: "";
@@ -159,28 +156,27 @@ export const FormGroup = styled.div`
       + label {
         &:before {
           content: "";
-          background: ${props => props.theme.colors.primary};
+          background: ${p => p.theme.colors.primary};
         }
 
         &:after {
           content: "";
           transform: translate3d(20px, 0, 0);
-          border: 3px solid ${props => props.theme.colors.primary};
+          border: 3px solid ${p => p.theme.colors.primary};
         }
       }
     }
   }
 
   &:after {
-    ${props => props.errorMessage && `content: "${props.errorMessage}"`};
+    ${p => p.errorMessage && `content: "${p.errorMessage}"`};
     position: absolute;
     right: ${paddingVertical};
     top: 0;
     font-size: 0.8rem;
     padding: 10px 0 0 0;
     z-index: 3;
-    ${props =>
-      props.error && `color: ${props.theme.colors.error || "#f44336"}`};
+    ${p => p.error && `color: ${p.theme.colors.error || "#f44336"}`};
   }
 
   &:before {
@@ -190,10 +186,9 @@ export const FormGroup = styled.div`
     bottom: 0;
     width: 0%;
     height: 2px;
-    background: ${props => props.theme.colors.primary};
-    ${props => props.radius && `border-radius: ${props.radius}px`};
-    ${props =>
-      props.error && `background: ${props.theme.colors.error || "#f44336"}`};
+    background: ${p => p.theme.colors.primary};
+    ${p => p.radius && `border-radius: ${p.radius}px`};
+    ${p => p.error && `background: ${p.theme.colors.error || "#f44336"}`};
     transition: all 300ms ease-in-out;
   }
 
