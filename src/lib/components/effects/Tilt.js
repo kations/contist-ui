@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import styled from "styled-components";
 
-import { propsToStyle, styleProps } from '../../utils';
+import { propsToStyle, styleProps } from "../../utils";
 
-const TiltLayer = styled.div`
-  ${props => propsToStyle(props)};
-`;
+import Box from "../primitives/Box";
+
+const TiltLayer = styled(Box)``;
 
 class Tilt extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      style: {},
+      style: {}
     };
 
     const defaultSettings = {
       reverse: false,
       max: 35,
       perspective: 1000,
-      easing: 'cubic-bezier(.03,.98,.52,.99)',
-      scale: '1.1',
-      speed: '1000',
+      easing: "cubic-bezier(.03,.98,.52,.99)",
+      scale: "1.1",
+      speed: "1000",
       transition: true,
       axis: null,
-      reset: true,
+      reset: true
     };
 
     this.width = null;
@@ -47,7 +47,7 @@ class Tilt extends Component {
     //this.element = findDOMNode(this);
     this.element = ReactDOM.findDOMNode(this);
     setTimeout(() => {
-      if (this.element.parentElement.querySelector(':hover') === this.element) {
+      if (this.element.parentElement.querySelector(":hover") === this.element) {
         this.onMouseEnter();
       }
     }, 0);
@@ -63,8 +63,8 @@ class Tilt extends Component {
       Object.assign({}, this.state, {
         style: {
           ...this.state.style,
-          willChange: 'transform',
-        },
+          willChange: "transform"
+        }
       })
     );
 
@@ -79,13 +79,13 @@ class Tilt extends Component {
           style: {
             ...this.state.style,
             transform:
-              'perspective(' +
+              "perspective(" +
               this.settings.perspective +
-              'px) ' +
-              'rotateX(0deg) ' +
-              'rotateY(0deg) ' +
-              'scale3d(1, 1, 1)',
-          },
+              "px) " +
+              "rotateX(0deg) " +
+              "rotateY(0deg) " +
+              "scale3d(1, 1, 1)"
+          }
         })
       );
     });
@@ -109,8 +109,8 @@ class Tilt extends Component {
       Object.assign({}, this.state, {
         style: {
           ...this.state.style,
-          transition: this.settings.speed + 'ms ' + this.settings.easing,
-        },
+          transition: this.settings.speed + "ms " + this.settings.easing
+        }
       })
     );
 
@@ -119,8 +119,8 @@ class Tilt extends Component {
         Object.assign({}, this.state, {
           style: {
             ...this.state.style,
-            transition: '',
-          },
+            transition: ""
+          }
         })
       );
     }, this.settings.speed);
@@ -155,7 +155,7 @@ class Tilt extends Component {
       tiltX,
       tiltY,
       percentageX,
-      percentageY,
+      percentageY
     };
   }
 
@@ -175,23 +175,23 @@ class Tilt extends Component {
         style: {
           ...this.state.style,
           transform:
-            'perspective(' +
+            "perspective(" +
             this.settings.perspective +
-            'px) ' +
-            'rotateX(' +
-            (this.settings.axis === 'x' ? 0 : values.tiltY) +
-            'deg) ' +
-            'rotateY(' +
-            (this.settings.axis === 'y' ? 0 : values.tiltX) +
-            'deg) ' +
-            'scale3d(' +
+            "px) " +
+            "rotateX(" +
+            (this.settings.axis === "x" ? 0 : values.tiltY) +
+            "deg) " +
+            "rotateY(" +
+            (this.settings.axis === "y" ? 0 : values.tiltX) +
+            "deg) " +
+            "scale3d(" +
             this.settings.scale +
-            ', ' +
+            ", " +
             this.settings.scale +
-            ', ' +
+            ", " +
             this.settings.scale +
-            ')',
-        },
+            ")"
+        }
       })
     );
 
@@ -215,7 +215,7 @@ class Tilt extends Component {
 }
 
 Tilt.propTypes = {
-  ...styleProps,
+  ...styleProps
 };
 
 export default Tilt;

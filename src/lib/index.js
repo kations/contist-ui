@@ -4,8 +4,6 @@ const VisibilitySensor = require("react-visibility-sensor");
 
 export { VisibilitySensor, parseToRgb, darken, lighten, setLightness };
 
-export { default as Wrapper } from "./components/Wrapper";
-export { default as Section } from "./components/Section";
 export { default as Toolbar } from "./components/Toolbar";
 export { default as Reset } from "./components/Reset";
 export { default as FormState } from "./components/FormState";
@@ -17,6 +15,8 @@ export { default as Button } from "./components/ui/Button";
 export { default as Avatar } from "./components/ui/Avatar";
 export { default as Headline } from "./components/ui/Headline";
 export { default as Overlay } from "./components/ui/Overlay";
+export { default as Icon } from "./components/ui/Icon";
+export { default as Tabs } from "./components/ui/Tabs";
 
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";
@@ -35,6 +35,9 @@ export { default as InlineBlock } from "./components/primitives/InlineBlock";
 export { default as Absolute } from "./components/primitives/Absolute";
 export { default as Fixed } from "./components/primitives/Fixed";
 export { default as Sticky } from "./components/primitives/Sticky";
+
+export { default as Section } from "./components/primitives/Section";
+export { default as Wrapper } from "./components/primitives/Wrapper";
 
 //effects
 export { default as Tilt } from "./components/effects/Tilt";

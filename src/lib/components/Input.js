@@ -1,13 +1,22 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import React, { Fragment } from "react";
+import styled from "styled-components";
 
-import propsToStyle from '../utils/propsToStyle';
+import propsToStyle from "../utils/propsToStyle";
 
-let paddingVertical = '12px';
+let paddingVertical = "12px";
 
 export const Input = styled.input`
   width: 100%;
   font-size: 1rem;
+  background: transparent;
+  background-image: none;
+  appearance: none;
+  border-radius: 0px;
+  vertical-align: top;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  margin: 0;
 
   ${props => propsToStyle(props)};
 `;
@@ -42,15 +51,15 @@ export const FormGroup = styled.div`
   ${props => props.radius && `border-radius: ${props.radius}px`};
 
   label {
-    position: ${props => (props.floating ? 'absolute' : 'relative')};
-    left: ${props => (props.floating ? '0px' : 'auto')};
-    top: ${props => (props.floating ? '0px' : 'auto')};
-    font-size: ${props => (props.floating ? '1rem' : '')};
+    position: ${props => (props.floating ? "absolute" : "relative")};
+    left: ${props => (props.floating ? "0px" : "auto")};
+    top: ${props => (props.floating ? "0px" : "auto")};
+    font-size: ${props => (props.floating ? "1rem" : "")};
     z-index: 2;
     padding: 10px ${paddingVertical} 0 ${paddingVertical};
     transition: all 300ms ease-in-out;
     ${props =>
-      props.error && `color: ${props.theme.colors.error || '#f44336'}`};
+      props.error && `color: ${props.theme.colors.error || "#f44336"}`};
     ${props =>
       props.radius &&
       `border-radius: ${props.radius - 2}px ${props.radius - 2}px 0 0`};
@@ -91,22 +100,13 @@ export const FormGroup = styled.div`
         transform: translate3d(0, -10px, 0);
         font-size: 0.8rem;
 }`
-      : ''} input,
+      : ""} input,
   select,
   textarea {
     position: relative;
     z-index: 1;
-    padding: ${props => (props.floating ? '24px' : '6px')} ${paddingVertical}
+    padding: ${props => (props.floating ? "24px" : "6px")} ${paddingVertical}
       10px ${paddingVertical};
-    background: transparent;
-    background-image: none;
-    appearance: none;
-    border-radius: 0px;
-    vertical-align: top;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    margin: 0;
     color: ${props => props.theme.colors.dark};
     ${props =>
       props.radius &&
@@ -119,7 +119,7 @@ export const FormGroup = styled.div`
     color: rgba(0, 0, 0, 0.5);
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     display: none;
     + label {
       padding: 13px ${paddingVertical};
@@ -128,7 +128,7 @@ export const FormGroup = styled.div`
       color: ${props => props.theme.colors.dark};
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         margin-top: -15px;
@@ -141,7 +141,7 @@ export const FormGroup = styled.div`
       }
 
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         margin-top: -15px;
@@ -158,12 +158,12 @@ export const FormGroup = styled.div`
     &:checked {
       + label {
         &:before {
-          content: '';
+          content: "";
           background: ${props => props.theme.colors.primary};
         }
 
         &:after {
-          content: '';
+          content: "";
           transform: translate3d(20px, 0, 0);
           border: 3px solid ${props => props.theme.colors.primary};
         }
@@ -180,11 +180,11 @@ export const FormGroup = styled.div`
     padding: 10px 0 0 0;
     z-index: 3;
     ${props =>
-      props.error && `color: ${props.theme.colors.error || '#f44336'}`};
+      props.error && `color: ${props.theme.colors.error || "#f44336"}`};
   }
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -193,13 +193,13 @@ export const FormGroup = styled.div`
     background: ${props => props.theme.colors.primary};
     ${props => props.radius && `border-radius: ${props.radius}px`};
     ${props =>
-      props.error && `background: ${props.theme.colors.error || '#f44336'}`};
+      props.error && `background: ${props.theme.colors.error || "#f44336"}`};
     transition: all 300ms ease-in-out;
   }
 
   &:focus-within {
     &:before {
-      content: '';
+      content: "";
       width: 100%;
       left: 0%;
     }

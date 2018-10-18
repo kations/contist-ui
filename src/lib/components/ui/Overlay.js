@@ -21,7 +21,7 @@ const Backdrop = styled(Fixed)`
   align-items: safe center;
   justify-content: center;
   xalign-items: center;
-  xjustify-content: center;
+  xjustify-content: flex-start;
   z-index: 500;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -41,10 +41,20 @@ const OverlayContent = styled(Box)`
 
 class Overlay extends Component {
   componentDidUpdate(prevProps) {
+    var modalCount;
     if (prevProps.visible && !this.props.visible) {
-      document.body.removeAttribute("style");
+      modalCount = parseInt(document.body.getAttribute("modal-count"));
+      if (modalCount === 1) {
+        document.body.removeAttribute("style");
+      }
+      document.body.setAttribute("modal-count", modalCount - 1);
     } else if (!prevProps.visible && this.props.visible) {
       document.body.style.overflow = "hidden";
+      modalCount = parseInt(document.body.getAttribute("modal-count"));
+      document.body.setAttribute(
+        "modal-count",
+        isNaN(modalCount) ? 1 : modalCount + 1
+      );
     }
   }
 
@@ -56,7 +66,11 @@ class Overlay extends Component {
       handleClose,
       position,
       from,
-      children
+      children,
+      full,
+      fullHeight,
+      fullWidth,
+      noBg
     } = this.props;
 
     const justifyContent = {
@@ -64,13 +78,11 @@ class Overlay extends Component {
       left: "flex-start"
     };
 
-    console.log("in");
     return (
       <Delay unmount={300} mounted={visible}>
         <Portal>
           <Animate isVisible={visible}>
             <Backdrop
-              {...this.props}
               onClick={handleClose}
               justifyContent={justifyContent[position]}
               style={backdropStyle}
@@ -78,8 +90,11 @@ class Overlay extends Component {
               <Animate from={from} isVisible={visible}>
                 <OverlayContent
                   onClick={e => e.stopPropagation()}
-                  {...this.props}
                   style={contentStyle}
+                  full={full}
+                  fullHeight={fullHeight}
+                  fullWidth={fullWidth}
+                  noBg={noBg}
                 >
                   {children}
                 </OverlayContent>
@@ -94,8 +109,7 @@ class Overlay extends Component {
 
 Overlay.defaultProps = {
   from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
-  position: "center",
-  offsetY: "100px"
+  position: "center"
 };
 
 export default Overlay;

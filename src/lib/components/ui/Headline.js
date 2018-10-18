@@ -8,11 +8,13 @@ const StyledHeadline = styled(Box)`
   max-width: 100%;
   letter-spacing: 1px;
   word-spacing: 2px;
+  word-wrap: break-word;
+  line-height: 1.5;
 `;
 
 const parseText = (text: string, type: string) => {
   if (typeof text !== "string") return text;
-  //if (type === "word") return text.split(" ");
+  return text.split(" ").map(word => word.split(""));
   return text.split("");
 };
 
@@ -26,29 +28,37 @@ const Headline = props => (
     {props.animated
       ? parseText(props.children, "char").map((word, wordIndex) => (
           <Fragment>
-            {console.log(parseText(props.children, "char"))}
-
-            <Animate
-              from={{ transform: "translate3d(5px, 20px, 0)", opacity: 0 }}
-              delay={wordIndex * 20}
-              duration={650}
-              easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-              onVisible={props.onVisible}
-              isVisible={props.isVisible && !props.onVisible}
-              stayVisible={props.stayVisible}
-            >
-              <span
-                style={
-                  word !== " "
-                    ? {
+            {console.log(word)}
+            <span style={{ display: "inline-block" }}>
+              {word.map((char, charIndex) => (
+                <Fragment>
+                  <Animate
+                    from={{
+                      transform: "translate3d(5px, 20px, 0)",
+                      opacity: 0
+                    }}
+                    delay={
+                      wordIndex * props.delay +
+                      (charIndex * props.delay) / word.length
+                    }
+                    duration={props.duration}
+                    easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+                    onVisible={props.onVisible}
+                    isVisible={props.isVisible && !props.onVisible}
+                    stayVisible={props.stayVisible}
+                  >
+                    <span
+                      style={{
                         display: "inline-block"
-                      }
-                    : null
-                }
-              >
-                {word}
-              </span>
-            </Animate>
+                      }}
+                    >
+                      {char}
+                    </span>
+                  </Animate>
+                  {word.length - 1 === charIndex ? "\u00A0" : null}
+                </Fragment>
+              ))}
+            </span>
           </Fragment>
         ))
       : props.children}
@@ -60,7 +70,9 @@ Headline.defaultProps = {
   animated: false,
   isVisible: true,
   onVisible: false,
-  stayVisible: true
+  stayVisible: true,
+  delay: 100,
+  duration: 1000
 };
 
 export default Headline;

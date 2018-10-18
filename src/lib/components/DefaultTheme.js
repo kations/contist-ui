@@ -16,7 +16,7 @@ const DefaultTheme = {
     grey: "rgb(240,240,240)"
   },
   globals: {
-    wrapperWidth: "1200px",
+    wrapperWidth: "1000px",
     backdropColor: "rgba(0,0,0,0.25)",
     sidebarWidth: "300px",
     buttonRadius: "0.3rem",

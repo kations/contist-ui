@@ -21,20 +21,22 @@ import {
   DefaultTheme,
   Avatar,
   Overlay,
-  State
+  State,
+  Icon,
+  setLightness,
+  Tabs
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
 import styled, { createGlobalStyle } from "styled-components";
 import PropTypes from "prop-types";
-import { parseToRgb, darken, lighten, setLightness } from "polished";
-import { ui, primitives } from "./comps";
+import { ui, primitives, effects } from "./comps";
 console.log("Flex", Avatar);
 
 const GlobalStyle = createGlobalStyle`
   ${Reset}
 
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,800');
 
   html,
   body {
@@ -55,6 +57,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  h1 {
+    line-height: 1.2!important;
+  }
+
   h3 {
     text-transform: uppercase;
   }
@@ -70,7 +76,11 @@ const components = {
   Button,
   Grid,
   State,
-  Progress
+  Progress,
+  Tilt,
+  Ripple,
+  Icon,
+  Tabs
 };
 
 const ComponentItem = styled(Box)``;
@@ -113,7 +123,9 @@ class App extends Component {
             })
           }
         >
-          <ComponentPreview>{comp.comp}</ComponentPreview>
+          <Tilt options={{ max: 15, scale: 1.025 }}>
+            <ComponentPreview>{comp.comp}</ComponentPreview>
+          </Tilt>
           {comp.name}
         </ComponentItem>
       </Animate>
@@ -122,10 +134,41 @@ class App extends Component {
       <ThemeProvider theme={DefaultTheme}>
         <Fragment>
           <GlobalStyle />
-          <Toolbar position="sticky" top="0px" />
+          <Flex
+            background="primary"
+            height="90vh"
+            alignItems="center"
+            background={setLightness(0.85, "#455acf")}
+            backgroundSize="cover"
+          >
+            <Wrapper>
+              <Headline as="h1" color="primary" maxWidth="600px" animated>
+                React + Styled components UI system
+              </Headline>
+              <Headline as="p" color="#FFF" maxWidth="600px" margin="30px 0">
+                ContistUI is based on styled components v4 an aims for and easy
+                solution for nearly all of your UI needs.
+              </Headline>
+              <Button as="a" href="">
+                Github
+              </Button>
+            </Wrapper>
+          </Flex>
 
           <Section>
-            <Wrapper maxWidth={"1000px"}>
+            <Wrapper>
+              <Tabs
+                options={["vegetarisch", "vegan"]}
+                onChange={(index, value) => console.log(index, value)}
+                radio
+              />
+              <Tabs
+                options={["vegetarisch", "vegan"]}
+                onChange={(index, value) => console.log(index, value)}
+              >
+                <div>test</div>
+                <div>test 2</div>
+              </Tabs>
               <Animate offsetY="100px" isVisible>
                 <Headline as="h3" marginBottom={20} marginTop={50} animated>
                   PRIMITIVES
@@ -134,6 +177,12 @@ class App extends Component {
               <Grid>
                 {primitives.map((comp, index) => compItem(comp, index))}
               </Grid>
+              <Animate offsetY="100px" isVisible>
+                <Headline as="h3" marginBottom={20} marginTop={50} animated>
+                  Effects
+                </Headline>
+              </Animate>
+              <Grid>{effects.map((comp, index) => compItem(comp, index))}</Grid>
               <Animate offsetY="100px" isVisible>
                 <Headline as="h3" marginBottom={20} marginTop={50} animated>
                   UI Elements
@@ -157,7 +206,9 @@ class App extends Component {
               </Overlay>
 
               <Animate isVisible>
-                <Button invert>Ripple</Button>
+                <Button display={{ dt: "none" }} invert>
+                  Ripple
+                </Button>
               </Animate>
               <Tilt
                 options={{ max: 25, scale: 1.05 }}

@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { Fragment } from "react";
+import styled, { keyframes } from "styled-components";
 
-import { propsToStyle, styleProps } from '../../utils';
+import { propsToStyle, styleProps } from "../../utils";
+import Box from "../primitives/Box";
 
 const ripple = keyframes`
   100% {
@@ -15,9 +16,8 @@ const RippleWrapper = styled.div`
   display: inline-block;
 `;
 
-const RippleEffect = styled.div`
+const RippleEffect = styled(Box)`
   position: absolute;
-  background: ${props => props.color};
   border-radius: 50%;
   opacity: 1;
   transform: scale(0);
@@ -41,17 +41,21 @@ class Ripple extends React.Component {
       height: 0,
       top: 0,
       left: 0,
-      cursorPos: {},
+      cursorPos: {}
     };
   }
   componentDidMount() {
     let $ripple = this.refs.ripple;
-    $ripple.parentElement.setAttribute('style', 'position:relative;');
     if (this.props.hidden) {
-      $ripple.parentElement.setAttribute('style', 'overflow:hidden;');
+      $ripple.parentElement.setAttribute(
+        "style",
+        "position:relative;overflow:hidden;"
+      );
+    } else {
+      $ripple.parentElement.setAttribute("style", "position:relative;");
     }
-    $ripple.parentElement.addEventListener('mouseup', this.handleClick);
-    $ripple.parentElement.addEventListener('touchend', this.handleClick);
+    $ripple.parentElement.addEventListener("mouseup", this.handleClick);
+    $ripple.parentElement.addEventListener("touchend", this.handleClick);
   }
 
   handleClick = e => {
@@ -60,7 +64,7 @@ class Ripple extends React.Component {
       top: e.clientY,
       left: e.clientX,
       // Prevent Component duplicates do ripple effect at the same time
-      time: Date.now(),
+      time: Date.now()
     };
     this.setState({ cursorPos: cursorPos });
     this.handleRipple(cursorPos);
@@ -80,15 +84,15 @@ class Ripple extends React.Component {
     const { children, color } = this.props;
     return (
       <RippleEffect
-        className={'Ripple ' + (this.state.animate ? 'is-reppling' : '')}
+        className={"Ripple " + (this.state.animate ? "is-reppling" : "")}
         ref="ripple"
         style={{
-          top: this.state.top + 'px',
-          left: this.state.left + 'px',
-          width: this.state.width + 'px',
-          height: this.state.height + 'px',
+          top: this.state.top + "px",
+          left: this.state.left + "px",
+          width: this.state.width + "px",
+          height: this.state.height + "px"
         }}
-        color={color}
+        background={this.props.color}
       />
     );
   }
@@ -117,14 +121,14 @@ class Ripple extends React.Component {
       width: rippleSize,
       height: rippleSize,
       top: cursorPos.top - buttonPos.top - centerize,
-      left: cursorPos.left - buttonPos.left - centerize,
+      left: cursorPos.left - buttonPos.left - centerize
     });
   }
 }
 
 Ripple.defaultProps = {
-  color: 'rgba(255,255,255,0.3)',
-  maxSize: 100,
+  color: "rgba(255,255,255,0.3)",
+  maxSize: 100
 };
 
 export default Ripple;

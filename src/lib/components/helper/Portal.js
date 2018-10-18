@@ -8,6 +8,12 @@ class Portal extends React.PureComponent {
     this.node = null;
   }
 
+  componentWillUnmount() {
+    if (this.node) {
+      document.body.removeChild(this.node);
+    }
+  }
+
   render() {
     if (!this.props.node && !this.node) {
       this.node = document.createElement("div");

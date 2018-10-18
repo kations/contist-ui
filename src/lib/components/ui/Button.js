@@ -5,6 +5,8 @@ import { propsToStyle, styleProps, getColor } from "../../utils";
 import Progress from "../Progress";
 import Ripple from "../effects/Ripple";
 import Box from "../primitives/Box";
+import Flex from "../primitives/Flex";
+
 const buttonSizes = {
   large: " 1rem 2rem",
   medium: " 0.7rem 1.5rem",
@@ -114,7 +116,7 @@ class ButtonState extends Component {
         buttonBackground={buttonBackground}
         buttonText={buttonText}
       >
-        <span>{children}</span>
+        <Flex alignItems="center">{children}</Flex>
         {loading ? (
           <Progress
             style={{

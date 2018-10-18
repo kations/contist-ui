@@ -1,927 +1,937 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const styleProps = {
   /** The description for myProp */
+  gridTemplateColumns: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  gridGap: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object
+  ]),
   alignContent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   alignItems: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   alignSelf: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animation: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationDelay: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationDirection: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationDuration: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationFillMode: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationIterationCount: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationName: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationTimingFunction: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   animationPlayState: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   background: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundAttachment: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundImage: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundPosition: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundRepeat: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundClip: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundOrigin: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backgroundSize: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   backfaceVisibility: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   border: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottom: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottomColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottomLeftRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottomRightRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottomStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderBottomWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderCollapse: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImage: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImageOutset: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImageRepeat: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImageSlice: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImageSource: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderImageWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderLeft: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderLeftColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderLeftStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderLeftWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderRight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderRightColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderRightStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderRightWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderSpacing: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTop: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTopColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTopLeftRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTopRightRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTopStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderTopWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   borderWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   bottom: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   boxDecorationBreak: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   boxShadow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   boxSizing: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   captionSide: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   clear: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   clip: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   color: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnCount: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnFill: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnGap: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnRule: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnRuleColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnRuleStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnRuleWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columns: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnSpan: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   columnWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   content: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   counterIncrement: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   counterReset: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   cursor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   direction: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   display: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   emptyCells: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   filter: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexBasis: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexDirection: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexFlow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexGrow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexShrink: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   flexWrap: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   cssFloat: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   font: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontFamily: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontSize: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontVariant: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontWeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontSizeAdjust: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   fontStretch: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   hangingPunctuation: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   height: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   hyphens: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   imageOrientation: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   isolation: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   justifyContent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   left: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   letterSpacing: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   lineHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   listStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   listStyleImage: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   listStylePosition: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   listStyleType: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   margin: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   marginBottom: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   marginLeft: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   marginRight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   marginTop: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   maxHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   maxWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   minHeight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   minWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   navDown: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   navIndex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   navLeft: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   navRight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   navUp: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   objectFit: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   objectPosition: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   opacity: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   order: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   orphans: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   outline: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   outlineColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   outlineOffset: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   outlineStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   outlineWidth: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   overflow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   overflowX: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   overflowY: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   padding: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   paddingBottom: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   paddingLeft: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   paddingRight: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   paddingTop: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   pageBreakAfter: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   pageBreakBefore: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   pageBreakInside: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   perspective: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   perspectiveOrigin: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   position: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   quotes: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   resize: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   right: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   tableLayout: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   tabSize: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textAlign: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textAlignLast: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textDecoration: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textDecorationColor: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textDecorationLine: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textDecorationStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textIndent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textJustify: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textOverflow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textShadow: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   textTransform: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   top: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transform: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transformOrigin: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transformStyle: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transition: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transitionProperty: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transitionDuration: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transitionTimingFunction: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   transitionDelay: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   unicodeBidi: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   userSelect: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   verticalAlign: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   visibility: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   whiteSpace: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   width: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   wordBreak: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   wordSpacing: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   wordWrap: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   widows: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
+    PropTypes.object
   ]),
   zIndex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.object,
-  ]),
+    PropTypes.object
+  ])
 };
 
 export default styleProps;

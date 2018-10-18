@@ -123,7 +123,7 @@ class Animate extends Component {
 
 Animate.defaultProps = {
   from: { opacity: 0, transform: "translate3d(0, 0, 0)" },
-  to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+  to: { opacity: 1, transform: "translate3d(0, 0, 0) scale(1)" },
   easing: "cubic-bezier(0.645, 0.045, 0.355, 1)",
   transform: "translate3d(0,0,0)",
   count: 1,
