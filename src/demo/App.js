@@ -25,7 +25,8 @@ import {
   Icon,
   setLightness,
   Tabs,
-  Card
+  Card,
+  Swiper
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -140,7 +141,7 @@ class App extends Component {
           >
             <Wrapper>
               <Headline as="h1" color="primary" maxWidth="600px" animated>
-                React + Styled components UI system
+                React + Styled components mobile first UI system
               </Headline>
               <Headline as="p" color="#FFF" maxWidth="600px" margin="30px 0">
                 ContistUI is based on styled components v4 an aims for and easy
@@ -154,6 +155,51 @@ class App extends Component {
 
           <Section>
             <Wrapper>
+              <Swiper>
+                {({
+                  activeSlide,
+                  nextSlide,
+                  prevSlide,
+                  scrollToIndex,
+                  renderItems
+                }) => (
+                  <Fragment>
+                    {activeSlide}
+                    <button
+                      onClick={() => {
+                        prevSlide();
+                      }}
+                    >
+                      prev
+                    </button>
+                    <button
+                      onClick={() => {
+                        nextSlide();
+                      }}
+                    >
+                      next
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        scrollToIndex(3);
+                      }}
+                    >
+                      go to 3
+                    </button>
+                    {renderItems([
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
+                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />
+                    ])}
+                  </Fragment>
+                )}
+              </Swiper>
               <Card margin="50px 0">test</Card>
               <Tabs
                 options={["vegetarisch", "vegan"]}
@@ -165,7 +211,9 @@ class App extends Component {
                 onChange={(index, value) => console.log(index, value)}
               >
                 <div>test</div>
-                <div>test 2</div>
+                <div>
+                  test 2<br /> dsfdf
+                </div>
               </Tabs>
               <Animate offsetY="100px" isVisible>
                 <Headline as="h3" marginBottom={20} marginTop={50} animated>

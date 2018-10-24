@@ -10,9 +10,23 @@ class State extends React.Component {
   }
 
   handleSetState = state => {
-    console.log("setState", state);
     this.setState(state);
   };
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.persist) {
+      localStorage.setItem(this.props.persist, JSON.stringify(nextState));
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.persist) {
+      var state = localStorage.getItem(this.props.persist);
+      if (state !== null) {
+        this.setState(JSON.parse(state));
+      }
+    }
+  }
 
   resetState = () => {
     this.setState(this.initialState);

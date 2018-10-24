@@ -63,7 +63,11 @@ export const primitives = [
   {
     name: "<Grid />",
     comp: (
-      <Grid min="80px" width="100%" gap="20px">
+      <Grid
+        gridTemplateColumns="repeat(auto-fit, minmax(80px, 1fr))"
+        width="100%"
+        gridGap="20px"
+      >
         <Box height="80px" background="primary" />
         <Box height="80px" background="primary" />
       </Grid>
@@ -307,7 +311,7 @@ export const ui = [
     name: "<Icon />",
     comp: <Icon size={50} type="burger" />,
     preview: `
-    <State initialState={{ type: "burger" }}>
+    <State initialState={{ type: "burger" }} persist="icon-state">
       {({ state, setState }) => (
         <Fragment>
         <Headline as="h3" marginBottom={50} animated>

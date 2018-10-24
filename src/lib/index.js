@@ -1,8 +1,8 @@
-import { parseToRgb, darken, lighten, setLightness } from "polished";
+import { parseToRgb, darken, lighten, rgba, setLightness } from "polished";
 
 const VisibilitySensor = require("react-visibility-sensor");
 
-export { VisibilitySensor, parseToRgb, darken, lighten, setLightness };
+export { VisibilitySensor, parseToRgb, darken, lighten, setLightness, rgba };
 
 export { default as Toolbar } from "./components/Toolbar";
 export { default as Reset } from "./components/Reset";
@@ -18,6 +18,7 @@ export { default as Overlay } from "./components/ui/Overlay";
 export { default as Icon } from "./components/ui/Icon";
 export { default as Tabs } from "./components/ui/Tabs";
 export { default as Card } from "./components/ui/Card";
+export { default as Swiper } from "./components/ui/Swiper";
 
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";

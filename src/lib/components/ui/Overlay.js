@@ -70,7 +70,8 @@ class Overlay extends Component {
       full,
       fullHeight,
       fullWidth,
-      noBg
+      noBg,
+      portalNode
     } = this.props;
 
     const justifyContent = {
@@ -80,7 +81,7 @@ class Overlay extends Component {
 
     return (
       <Delay unmount={300} mounted={visible}>
-        <Portal>
+        <Portal node={portalNode}>
           <Animate isVisible={visible}>
             <Backdrop
               onClick={handleClose}
