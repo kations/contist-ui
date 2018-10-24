@@ -92,38 +92,40 @@ export class Swiper extends React.Component {
 
   prevSlide = () => {
     const scrollStep = this.slider.scrollWidth / this.slider.childNodes.length;
-    let sl = this.slider.scrollLeft;
-    let cw = this.slider.scrollWidth;
+    let scrollLeft = this.slider.scrollLeft;
+    let scrollWidth = this.slider.scrollWidth;
 
-    if (sl - scrollStep <= 0) {
+    if (scrollLeft - scrollStep <= 0) {
       scrollTo(this.slider, 0, 300);
     } else {
-      scrollTo(this.slider, sl - scrollStep, 300);
+      scrollTo(this.slider, scrollLeft - scrollStep, 300);
     }
   };
 
   nextSlide = () => {
-    let sl = this.slider.scrollLeft;
-    let cw = this.slider.scrollWidth;
-    const scrollStep = this.slider.scrollWidth / this.slider.childNodes.length;
+    let scrollLeft = this.slider.scrollLeft;
+    let scrollWidth = this.slider.scrollWidth;
+    const scrollStep = scrollWidth / this.slider.childNodes.length;
 
-    if (sl + scrollStep >= cw) {
-      scrollTo(this.slider, cw, 300);
+    if (scrollLeft + scrollStep >= scrollWidth) {
+      scrollTo(this.slider, scrollWidth, 300);
     } else {
-      scrollTo(this.slider, sl + scrollStep, 300);
+      scrollTo(this.slider, scrollLeft + scrollStep, 300);
     }
   };
 
   scrollToIndex = index => {
-    let cw = this.slider.scrollWidth;
-    const scrollStep = this.slider.scrollWidth / this.slider.childNodes.length;
+    let scrollWidth = this.slider.scrollWidth;
+    const scrollStep = scrollWidth / this.slider.childNodes.length;
     scrollTo(this.slider, index * scrollStep, 300);
   };
 
   setRef = node => {
     if (!this.slider) {
       this.slider = node;
-      this.scrollToIndex(this.props.initalSlide);
+      if (this.props.initalSlide !== 0) {
+        this.scrollToIndex(this.props.initalSlide);
+      }
       this.slider.addEventListener("scroll", throttle(100, this.onScroll));
     }
   };
@@ -132,26 +134,27 @@ export class Swiper extends React.Component {
     return (
       <SliderContainer>
         <SliderTrack {...this.props} ref={this.setRef}>
-          {items.map((child, index) => {
-            return (
-              <Slide
-                key={index}
-                className={this.props.activeSlide === index && "active"}
-                {...this.props}
-              >
-                <Animate
-                  from={{
-                    transform: "translate3d(0,0,0) scale(0.9)",
-                    opacity: 0
-                  }}
-                  onVisible
-                  stayVisible
+          {items &&
+            items.map((child, index) => {
+              return (
+                <Slide
+                  key={index}
+                  className={this.props.activeSlide === index && "active"}
+                  {...this.props}
                 >
-                  {child}
-                </Animate>
-              </Slide>
-            );
-          })}
+                  <Animate
+                    from={{
+                      transform: "translate3d(0,0,0) scale(0.9)",
+                      opacity: 0
+                    }}
+                    onVisible
+                    stayVisible
+                  >
+                    {child}
+                  </Animate>
+                </Slide>
+              );
+            })}
         </SliderTrack>
       </SliderContainer>
     );
@@ -174,7 +177,7 @@ export class Swiper extends React.Component {
 }
 
 Swiper.defaultProps = {
-  initalSlide: 1,
+  initalSlide: 0,
   slideWidth: "300px",
   gap: 20
 };
