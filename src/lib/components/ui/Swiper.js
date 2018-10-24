@@ -18,7 +18,8 @@ const SliderTrack = styled.div`
   scroll-snap-points-y: repeat(${p => p.slideWidth});
   scroll-snap-type: x mandatory;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 `;
@@ -85,15 +86,19 @@ export class Swiper extends React.Component {
   }
 
   onScroll = e => {
-    const scrollStep = this.slider.scrollWidth / this.slider.childNodes.length;
+    if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+    const scrollStep = this.slider.scrollWidth / this.props.data.length;
     var index = Math.round(e.target.scrollLeft / scrollStep);
-    this.setState({ activeSlide: index });
+    this.setState({ activeSlide: index, isScrolling: true });
+    this.scrollTimeout = setTimeout(() => {
+      this.setState({ isScrolling: false });
+    }, 200);
   };
 
   prevSlide = () => {
-    const scrollStep = this.slider.scrollWidth / this.slider.childNodes.length;
-    let scrollLeft = this.slider.scrollLeft;
     let scrollWidth = this.slider.scrollWidth;
+    const scrollStep = scrollWidth / this.props.data.length;
+    let scrollLeft = this.state.activeSlide * scrollStep;
 
     if (scrollLeft - scrollStep <= 0) {
       scrollTo(this.slider, 0, 300);
@@ -103,9 +108,9 @@ export class Swiper extends React.Component {
   };
 
   nextSlide = () => {
-    let scrollLeft = this.slider.scrollLeft;
     let scrollWidth = this.slider.scrollWidth;
-    const scrollStep = scrollWidth / this.slider.childNodes.length;
+    const scrollStep = scrollWidth / this.props.data.length;
+    let scrollLeft = this.state.activeSlide * scrollStep;
 
     if (scrollLeft + scrollStep >= scrollWidth) {
       scrollTo(this.slider, scrollWidth, 300);
@@ -116,7 +121,7 @@ export class Swiper extends React.Component {
 
   scrollToIndex = index => {
     let scrollWidth = this.slider.scrollWidth;
-    const scrollStep = scrollWidth / this.slider.childNodes.length;
+    const scrollStep = scrollWidth / this.props.data.length;
     scrollTo(this.slider, index * scrollStep, 300);
   };
 
@@ -130,27 +135,18 @@ export class Swiper extends React.Component {
     }
   };
 
-  renderItems = items => {
+  renderItems = renderItem => {
     return (
       <SliderTrack {...this.props} ref={this.setRef}>
-        {items &&
-          items.map((child, index) => {
+        {this.props.data &&
+          this.props.data.map((item, index) => {
             return (
               <Slide
                 key={index}
-                className={this.props.activeSlide === index && "active"}
+                className={this.state.activeSlide === index && "active"}
                 {...this.props}
               >
-                <Animate
-                  from={{
-                    transform: "translate3d(0,0,0) scale(0.9)",
-                    opacity: 0
-                  }}
-                  onVisible
-                  stayVisible
-                >
-                  {child}
-                </Animate>
+                {renderItem(item, this.state.activeSlide === index, index)}
               </Slide>
             );
           })}
@@ -162,6 +158,7 @@ export class Swiper extends React.Component {
     const { children, render } = this.props;
     const props = {
       activeSlide: this.state.activeSlide,
+      isScrolling: this.state.isScrolling,
       scrollToIndex: this.scrollToIndex,
       nextSlide: this.nextSlide,
       prevSlide: this.prevSlide,
@@ -177,7 +174,8 @@ export class Swiper extends React.Component {
 Swiper.defaultProps = {
   initalSlide: 0,
   slideWidth: "300px",
-  gap: 20
+  gap: 20,
+  data: []
 };
 
 export default Swiper;

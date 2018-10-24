@@ -155,9 +155,19 @@ class App extends Component {
 
           <Section>
             <Wrapper>
-              <Swiper>
+              <Swiper
+                data={[
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+                  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg"
+                ]}
+              >
                 {({
                   activeSlide,
+                  isScrolling,
                   nextSlide,
                   prevSlide,
                   scrollToIndex,
@@ -165,6 +175,7 @@ class App extends Component {
                 }) => (
                   <Fragment>
                     {activeSlide}
+                    {isScrolling && "scrolling"}
                     <button
                       onClick={() => {
                         prevSlide();
@@ -187,16 +198,13 @@ class App extends Component {
                     >
                       go to 3
                     </button>
-                    {renderItems([
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />,
-                      <img src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg" />
-                    ])}
+                    {renderItems((item, active, index) => (
+                      <div>
+                        <img src={item} />
+                        {active && "active"}
+                        {index}
+                      </div>
+                    ))}
                   </Fragment>
                 )}
               </Swiper>
