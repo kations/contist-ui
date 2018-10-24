@@ -81,7 +81,7 @@ export class Swiper extends React.Component {
   }
 
   componentWillUnmount() {
-    this.slider.removeEventListener("scroll");
+    this.slider.removeEventListener("scroll", this.onScroll);
   }
 
   onScroll = e => {
@@ -132,31 +132,29 @@ export class Swiper extends React.Component {
 
   renderItems = items => {
     return (
-      <SliderContainer>
-        <SliderTrack {...this.props} ref={this.setRef}>
-          {items &&
-            items.map((child, index) => {
-              return (
-                <Slide
-                  key={index}
-                  className={this.props.activeSlide === index && "active"}
-                  {...this.props}
+      <SliderTrack {...this.props} ref={this.setRef}>
+        {items &&
+          items.map((child, index) => {
+            return (
+              <Slide
+                key={index}
+                className={this.props.activeSlide === index && "active"}
+                {...this.props}
+              >
+                <Animate
+                  from={{
+                    transform: "translate3d(0,0,0) scale(0.9)",
+                    opacity: 0
+                  }}
+                  onVisible
+                  stayVisible
                 >
-                  <Animate
-                    from={{
-                      transform: "translate3d(0,0,0) scale(0.9)",
-                      opacity: 0
-                    }}
-                    onVisible
-                    stayVisible
-                  >
-                    {child}
-                  </Animate>
-                </Slide>
-              );
-            })}
-        </SliderTrack>
-      </SliderContainer>
+                  {child}
+                </Animate>
+              </Slide>
+            );
+          })}
+      </SliderTrack>
     );
   };
 
@@ -170,9 +168,9 @@ export class Swiper extends React.Component {
       renderItems: this.renderItems
     };
     if (render) {
-      return render(props);
+      return <SliderContainer>{render(props)}</SliderContainer>;
     }
-    return children(props);
+    return <SliderContainer>{children(props)}</SliderContainer>;
   }
 }
 
