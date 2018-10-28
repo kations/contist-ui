@@ -5,39 +5,41 @@ import Animate from "../effects/Animate";
 const SliderContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 `;
 
 const SliderTrack = styled.div`
   position: relative;
-  margin-bottom: -20px;
-  padding-bottom: 20px;
+  margin-bottom: ${p => (p.horizontal ? "-20px" : "0px")};
+  padding-bottom: ${p => (p.horizontal ? "20px" : "0px")};
   width: 100%;
-  height: calc(100% + 20px);
+  height: ${p => (p.horizontal ? "calc(100% + 20px)" : "100%")};
   scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(${p => p.slideWidth});
-  scroll-snap-type: x mandatory;
+  scroll-snap-points-${p => (p.horizontal ? "x" : "y")}: repeat(${p =>
+  p.slideWidth});
+  scroll-snap-type: ${p => (p.horizontal ? "x" : "y")} mandatory;
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
+  flex-direction: ${p => (p.horizontal ? "row" : "column")};
+  overflow-x: ${p => (p.horizontal ? "auto" : "hidden")};
+  overflow-y: ${p => (p.horizontal ? "hidden" : "auto")};
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 `;
 
 const Slide = styled.div`
-  min-width: ${p => p.slideWidth};
+  left: 0px;
+  min-width: ${p => (p.horizontal ? p.slideWidth : "auto")};
+  min-height: ${p => (!p.horizontal ? p.slideWidth : "auto")};
   height: auto;
   scroll-snap-align: start;
   text-align: center;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding-right: ${p => p.gap}px;
 `;
 
-const scrollTo = (element, to, duration) => {
-  var start = element.scrollLeft,
+const scrollTo = (element, to, duration, horizontal) => {
+  var start = horizontal ? element.scrollLeft : element.scrollTop,
     change = to - start,
     currentTime = 0,
     increment = 20;
@@ -45,7 +47,12 @@ const scrollTo = (element, to, duration) => {
   var animateScroll = function() {
     currentTime += increment;
     var val = Math.easeInOutQuad(currentTime, start, change, duration);
-    element.scrollTo(val, 0);
+    if (horizontal) {
+      element.scrollTo(val, 0);
+    } else {
+      element.scrollTo(0, val);
+    }
+
     if (currentTime < duration) {
       setTimeout(animateScroll, increment);
     }
@@ -87,8 +94,14 @@ export class Swiper extends React.Component {
 
   onScroll = e => {
     if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
-    const scrollStep = this.slider.scrollWidth / this.props.data.length;
-    var index = Math.round(e.target.scrollLeft / scrollStep);
+    let scrollWidth = this.props.horizontal
+      ? this.slider.scrollWidth
+      : this.slider.scrollHeight;
+    const scrollStep = scrollWidth / this.props.data.length;
+    let scrolled = this.props.horizontal
+      ? e.target.scrollLeft
+      : e.target.scrollTop;
+    var index = Math.round(scrolled / scrollStep);
     this.setState({ activeSlide: index, isScrolling: true });
     this.scrollTimeout = setTimeout(() => {
       this.setState({ isScrolling: false });
@@ -96,33 +109,49 @@ export class Swiper extends React.Component {
   };
 
   prevSlide = () => {
-    let scrollWidth = this.slider.scrollWidth;
+    let scrollWidth = this.props.horizontal
+      ? this.slider.scrollWidth
+      : this.slider.scrollHeight;
     const scrollStep = scrollWidth / this.props.data.length;
     let scrollLeft = this.state.activeSlide * scrollStep;
 
     if (scrollLeft - scrollStep <= 0) {
-      scrollTo(this.slider, 0, 300);
+      scrollTo(this.slider, 0, 300, this.props.horizontal);
     } else {
-      scrollTo(this.slider, scrollLeft - scrollStep, 300);
+      scrollTo(
+        this.slider,
+        scrollLeft - scrollStep,
+        300,
+        this.props.horizontal
+      );
     }
   };
 
   nextSlide = () => {
-    let scrollWidth = this.slider.scrollWidth;
+    let scrollWidth = this.props.horizontal
+      ? this.slider.scrollWidth
+      : this.slider.scrollHeight;
     const scrollStep = scrollWidth / this.props.data.length;
     let scrollLeft = this.state.activeSlide * scrollStep;
 
     if (scrollLeft + scrollStep >= scrollWidth) {
-      scrollTo(this.slider, scrollWidth, 300);
+      scrollTo(this.slider, scrollWidth, 300, this.props.horizontal);
     } else {
-      scrollTo(this.slider, scrollLeft + scrollStep, 300);
+      scrollTo(
+        this.slider,
+        scrollLeft + scrollStep,
+        300,
+        this.props.horizontal
+      );
     }
   };
 
   scrollToIndex = index => {
-    let scrollWidth = this.slider.scrollWidth;
+    let scrollWidth = this.props.horizontal
+      ? this.slider.scrollWidth
+      : this.slider.scrollHeight;
     const scrollStep = scrollWidth / this.props.data.length;
-    scrollTo(this.slider, index * scrollStep, 300);
+    scrollTo(this.slider, index * scrollStep, 300, this.props.horizontal);
   };
 
   setRef = node => {
@@ -136,15 +165,22 @@ export class Swiper extends React.Component {
   };
 
   renderItems = renderItem => {
+    const { horizontal, slideWidth, gap } = this.props;
     return (
-      <SliderTrack {...this.props} ref={this.setRef}>
+      <SliderTrack
+        horizontal={horizontal}
+        slideWidth={slideWidth}
+        ref={this.setRef}
+      >
         {this.props.data &&
           this.props.data.map((item, index) => {
             return (
               <Slide
                 key={index}
                 className={this.state.activeSlide === index && "active"}
-                {...this.props}
+                horizontal={horizontal}
+                slideWidth={slideWidth}
+                gap={gap}
               >
                 {renderItem(item, this.state.activeSlide === index, index)}
               </Slide>
@@ -172,9 +208,10 @@ export class Swiper extends React.Component {
 }
 
 Swiper.defaultProps = {
+  horizontal: true,
   initalSlide: 0,
-  slideWidth: "300px",
-  gap: 20,
+  slideWidth: "100%",
+  gap: 0,
   data: []
 };
 

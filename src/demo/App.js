@@ -26,6 +26,7 @@ import {
   setLightness,
   Tabs,
   Card,
+  Masonry,
   Swiper
 } from "../lib";
 import Playground from "./components/playground";
@@ -84,6 +85,17 @@ const components = {
   Icon,
   Tabs
 };
+
+const data = [
+  "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+  "https://images.unsplash.com/photo-1540566851866-263d097737a2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8584a778cc46d1100326d6a2af9a2df5&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540561366368-01757f6d4cf7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b1e1584477cc73bc8a29e5d56257932&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540587446736-6dc8582fb2ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7980ec9f48e75d4088bdfe86ef69bd21&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540566616788-2187f7c0edbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f03ae6a5f8d21078cc470c9aa882a6ab&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540567592819-88185873775d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d416106327c67da00983459f7ebdbabc&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540625252615-a6cfa7b32eb5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d36f340fc1dd81ad5daaf4b994b85a8e&auto=format&fit=crop&w=900&q=60",
+  "https://images.unsplash.com/photo-1540589801768-2ceaac3bbe02?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6f1bfe3be20f6c1c88025a4f34959b8d&auto=format&fit=crop&w=900&q=60"
+];
 
 class App extends Component {
   constructor(props) {
@@ -155,7 +167,26 @@ class App extends Component {
 
           <Section>
             <Wrapper>
+              <Masonry>
+                {data.map((item, index) => {
+                  return (
+                    <Animate
+                      from={{
+                        transform: "translate3d(5px, 50px, 0)",
+                        opacity: 0
+                      }}
+                      delay={index * 100}
+                      onVisible
+                      stayVisible
+                    >
+                      <img src={item} />
+                    </Animate>
+                  );
+                })}
+              </Masonry>
               <Swiper
+                slideWidth="300px"
+                gap={20}
                 data={[
                   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
                   "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
@@ -175,7 +206,7 @@ class App extends Component {
                 }) => (
                   <Fragment>
                     {activeSlide}
-                    {isScrolling && "scrolling"}
+
                     <button
                       onClick={() => {
                         prevSlide();
@@ -198,12 +229,19 @@ class App extends Component {
                     >
                       go to 3
                     </button>
+                    {isScrolling && "scrolling"}
                     {renderItems((item, active, index) => (
-                      <div>
-                        <img src={item} />
+                      <Flex
+                        width="100%"
+                        height="300px"
+                        alignItems="center"
+                        justifyContent="center"
+                        background="primary"
+                        color="#FFF"
+                      >
                         {active && "active"}
                         {index}
-                      </div>
+                      </Flex>
                     ))}
                   </Fragment>
                 )}

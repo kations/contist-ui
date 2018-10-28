@@ -5,7 +5,6 @@ import { propsToStyle, styleProps } from "../../utils";
 import DefaultTheme from "../DefaultTheme";
 
 const Box = styled.div`
-  width: 100;
   ${p => propsToStyle(p, p.theme)};
 `;
 

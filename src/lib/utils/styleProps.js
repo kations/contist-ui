@@ -12,6 +12,11 @@ const styleProps = {
     PropTypes.string,
     PropTypes.object
   ]),
+  pointerEvents: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object
+  ]),
   alignContent: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
