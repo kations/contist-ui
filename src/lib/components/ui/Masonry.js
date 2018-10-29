@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ReactResizeDetector from "react-resize-detector";
 
 import Box from "../primitives/Box";
 
@@ -64,7 +65,6 @@ class Masonry extends Component {
     if (!this.slider) {
       this.slider = node;
       this.resizeGrid(this.slider);
-      window.addEventListener("resize", throttle(100, this.onResize));
     }
   };
 
@@ -79,8 +79,22 @@ class Masonry extends Component {
         {...this.props}
       >
         {React.Children.map(children, child => (
-          <div>{child}</div>
+          <div>
+            {child}
+            <ReactResizeDetector
+              handleHeight
+              onResize={() => {
+                if (this.slider) this.resizeGrid(this.slider);
+              }}
+            />
+          </div>
         ))}
+        <ReactResizeDetector
+          handleWidth
+          onResize={() => {
+            if (this.slider) this.resizeGrid(this.slider);
+          }}
+        />
       </Grid>
     );
   }

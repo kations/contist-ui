@@ -31,14 +31,12 @@ const ListItem = ({ icon, title, subTitle, actions }) => {
     <List>
       {icon || null}
       <ListTitle>{title}</ListTitle>
-      <ListAction>{actions}</ListAction>
     </List>
   );
 };
 
 ListItem.defaultProps = {
-  title: "test",
-  actions: [<Icon type="arrow-right" size={20} />]
+  title: "test"
 };
 
 export default ListItem;

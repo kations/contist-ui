@@ -20,6 +20,7 @@ export { default as Tabs } from "./components/ui/Tabs";
 export { default as Card } from "./components/ui/Card";
 export { default as Swiper } from "./components/ui/Swiper";
 export { default as Masonry } from "./components/ui/Masonry";
+export { default as ListItem } from "./components/ui/ListItem";
 
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";

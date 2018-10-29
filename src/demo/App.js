@@ -27,7 +27,8 @@ import {
   Tabs,
   Card,
   Masonry,
-  Swiper
+  Swiper,
+  ListItem
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
