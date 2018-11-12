@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 
 class Delay extends React.Component {
-  static defaultProps: {
+  static defaultProps = {
     mount: 1,
     unmount: 1
   };

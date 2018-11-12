@@ -65,7 +65,7 @@ const Indicator = styled.div`
 `;
 
 class TabsView extends Component {
-  static defaultProps: {
+  static defaultProps = {
     lineWidth: 2
   };
   constructor() {

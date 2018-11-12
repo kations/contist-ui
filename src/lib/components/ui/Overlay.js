@@ -40,7 +40,7 @@ const OverlayContent = styled(Box)`
 `;
 
 class Overlay extends Component {
-  static defaultProps: {
+  static defaultProps = {
     from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
     position: "center"
   };

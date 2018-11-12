@@ -33,7 +33,7 @@ const RippleEffect = styled(Box)`
 `;
 
 class Ripple extends React.Component {
-  static defaultProps: {
+  static defaultProps = {
     color: "rgba(255,255,255,0.3)",
     maxSize: 100
   };

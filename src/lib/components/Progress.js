@@ -65,7 +65,7 @@ const diameter = Math.round(Math.PI * radius * 2);
 const getOffset = (val = 0) => Math.round(((100 - val) / 100) * diameter);
 
 class Progress extends Component {
-  static defaultProps: {
+  static defaultProps = {
     animate: true,
     animationDuration: "1s",
     loadingDuration: "3s",

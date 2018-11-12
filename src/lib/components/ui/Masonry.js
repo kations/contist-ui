@@ -28,7 +28,7 @@ const throttle = (delay, fn) => {
 };
 
 class Masonry extends Component {
-  static defaultProps: {
+  static defaultProps = {
     gap: 20
   };
   constructor() {

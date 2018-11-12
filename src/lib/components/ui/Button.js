@@ -68,7 +68,7 @@ const ButtonProgress = styled(Progress)`
 `;
 
 class ButtonState extends Component {
-  static defaultProps: {
+  static defaultProps = {
     type: "primary",
     size: "medium",
     loading: false

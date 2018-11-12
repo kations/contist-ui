@@ -147,7 +147,7 @@ const StepText = styled.p`
 `;
 
 class RangeSlider extends Component {
-  static defaultProps: {
+  static defaultProps = {
     thumbSize: 30,
     thumbRadius: "50%",
     thumbValues: true,
