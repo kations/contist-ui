@@ -16,7 +16,7 @@ const Backdrop = styled(Fixed)`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: ${p => p.theme.globals.backdropColor};
+  background: ${p => p.theme.globals.backdropColor || "rgba(0,0,0,0.4)"};
   display: flex;
   align-items: safe center;
   justify-content: center;
@@ -40,6 +40,11 @@ const OverlayContent = styled(Box)`
 `;
 
 class Overlay extends Component {
+  static defaultProps: {
+    from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
+    position: "center"
+  };
+
   componentDidUpdate(prevProps) {
     var modalCount;
     if (prevProps.visible && !this.props.visible) {
@@ -107,10 +112,5 @@ class Overlay extends Component {
     );
   }
 }
-
-Overlay.defaultProps = {
-  from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
-  position: "center"
-};
 
 export default Overlay;

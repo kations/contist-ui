@@ -4,7 +4,10 @@ class State extends React.Component {
   constructor(props) {
     super(props);
 
-    const { initialState } = this.props;
+    var initialState = props.initialState || {};
+    if (props.persist && typeof document !== "undefined") {
+      initialState = localStorage.getItem(props.persist);
+    }
     this.initialState = initialState;
     this.state = { ...initialState };
   }

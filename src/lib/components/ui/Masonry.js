@@ -28,6 +28,9 @@ const throttle = (delay, fn) => {
 };
 
 class Masonry extends Component {
+  static defaultProps: {
+    gap: 20
+  };
   constructor() {
     super();
     this.state = {
@@ -42,11 +45,8 @@ class Masonry extends Component {
     var rowGap = 0;
     grid.style.gridAutoRows = "auto";
     grid.style.alignItems = "self-start";
-    console.log("item.clientHeight", grid);
 
     grid.childNodes.forEach(item => {
-      console.log("item.clientHeight", item.clientHeight, rowHeight, grid);
-
       item.style.gridRowEnd = `span ${Math.ceil(
         (item.clientHeight + rowGap) / (rowHeight + rowGap)
       )}`;
@@ -55,7 +55,6 @@ class Masonry extends Component {
   };
 
   onResize = () => {
-    console.log("resize");
     setTimeout(() => {
       this.resizeGrid(this.slider);
     }, 100);
@@ -99,9 +98,5 @@ class Masonry extends Component {
     );
   }
 }
-
-Masonry.defaultProps = {
-  gap: 20
-};
 
 export default Masonry;

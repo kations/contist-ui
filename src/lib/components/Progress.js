@@ -65,6 +65,18 @@ const diameter = Math.round(Math.PI * radius * 2);
 const getOffset = (val = 0) => Math.round(((100 - val) / 100) * diameter);
 
 class Progress extends Component {
+  static defaultProps: {
+    animate: true,
+    animationDuration: "1s",
+    loadingDuration: "3s",
+    showPercentage: true,
+    showPercentageSymbol: true,
+    size: 100,
+    lineWidth: 30,
+    percentSpacing: 10,
+    roundedStroke: true
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -158,17 +170,5 @@ class Progress extends Component {
     );
   }
 }
-
-Progress.defaultProps = {
-  animate: true,
-  animationDuration: "1s",
-  loadingDuration: "3s",
-  showPercentage: true,
-  showPercentageSymbol: true,
-  size: 100,
-  lineWidth: 30,
-  percentSpacing: 10,
-  roundedStroke: true
-};
 
 export default Progress;

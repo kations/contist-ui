@@ -28,7 +28,8 @@ import {
   Card,
   Masonry,
   Swiper,
-  ListItem
+  ListItem,
+  RangeSlider
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -104,7 +105,8 @@ class App extends Component {
 
     this.state = {
       preview: undefined,
-      modal: false
+      modal: false,
+      value: [20, 50, 88]
     };
   }
 
@@ -168,6 +170,11 @@ class App extends Component {
 
           <Section>
             <Wrapper>
+              <RangeSlider
+                value={this.state.value}
+                onChange={value => this.setState({ value: value })}
+              />
+              <RangeSlider value={20} />
               <Masonry>
                 {data.map((item, index) => {
                   return (

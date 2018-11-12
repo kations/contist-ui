@@ -33,6 +33,11 @@ const RippleEffect = styled(Box)`
 `;
 
 class Ripple extends React.Component {
+  static defaultProps: {
+    color: "rgba(255,255,255,0.3)",
+    maxSize: 100
+  };
+
   constructor() {
     super();
     this.state = {
@@ -125,10 +130,5 @@ class Ripple extends React.Component {
     });
   }
 }
-
-Ripple.defaultProps = {
-  color: "rgba(255,255,255,0.3)",
-  maxSize: 100
-};
 
 export default Ripple;

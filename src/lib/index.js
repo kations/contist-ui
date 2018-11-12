@@ -21,7 +21,7 @@ export { default as Card } from "./components/ui/Card";
 export { default as Swiper } from "./components/ui/Swiper";
 export { default as Masonry } from "./components/ui/Masonry";
 export { default as ListItem } from "./components/ui/ListItem";
-
+export { default as RangeSlider } from "./components/ui/RangeSlider";
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";
 

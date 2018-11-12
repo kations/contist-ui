@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from "react";
 
 class Delay extends React.Component {
+  static defaultProps: {
+    mount: 1,
+    unmount: 1
+  };
+
   state = {
     shouldRender: false
   };
@@ -31,10 +36,5 @@ class Delay extends React.Component {
     return this.state.shouldRender ? this.props.children : null;
   }
 }
-
-Delay.defaultProps = {
-  mount: 1,
-  unmount: 1
-};
 
 export default Delay;

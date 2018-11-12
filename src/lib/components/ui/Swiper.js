@@ -80,6 +80,14 @@ const throttle = (delay, fn) => {
 };
 
 export class Swiper extends React.Component {
+  static defaultProps: {
+    horizontal: true,
+    initalSlide: 0,
+    slideWidth: "100%",
+    gap: 0,
+    data: []
+  };
+
   constructor(props) {
     super(props);
 
@@ -206,13 +214,5 @@ export class Swiper extends React.Component {
     return <SliderContainer>{children(props)}</SliderContainer>;
   }
 }
-
-Swiper.defaultProps = {
-  horizontal: true,
-  initalSlide: 0,
-  slideWidth: "100%",
-  gap: 0,
-  data: []
-};
 
 export default Swiper;

@@ -65,6 +65,9 @@ const Indicator = styled.div`
 `;
 
 class TabsView extends Component {
+  static defaultProps: {
+    lineWidth: 2
+  };
   constructor() {
     super();
     this.state = {
@@ -115,9 +118,5 @@ class TabsView extends Component {
     );
   }
 }
-
-TabsView.defaultProps = {
-  lineWidth: 2
-};
 
 export default TabsView;
