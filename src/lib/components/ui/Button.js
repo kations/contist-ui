@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled, { withTheme } from "styled-components";
+import PropTypes from "prop-types";
 
 import { propsToStyle, styleProps, getColor } from "../../utils";
 import Progress from "../Progress";
@@ -144,7 +145,8 @@ class ButtonState extends Component {
 }
 
 Button.propTypes = {
-  ...styleProps
+  ...styleProps,
+  outline: PropTypes.bool
 };
 
 export default withTheme(ButtonState);

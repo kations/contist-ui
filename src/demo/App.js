@@ -404,8 +404,9 @@ class App extends Component {
                           id="test"
                           placeholder="das ist ein test"
                           as="select"
+                          value=""
                         >
-                          <option value="" disabled selected>
+                          <option value="" disabled>
                             Bitte auswählen
                           </option>
                           <option>createGlobalStyle</option>

@@ -417,6 +417,11 @@ const styleProps = {
     PropTypes.string,
     PropTypes.object
   ]),
+  backdropFilter: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object
+  ]),
   filter: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,

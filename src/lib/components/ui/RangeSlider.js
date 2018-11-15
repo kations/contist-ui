@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ReactResizeDetector from "react-resize-detector";
 import { setLightness } from "polished";
+import PropTypes from "prop-types";
 
 import Box from "../primitives/Box";
 
@@ -257,5 +258,12 @@ class RangeSlider extends Component {
     );
   }
 }
+
+RangeSlider.propTypes = {
+  thumbSize: PropTypes.number,
+  thumbRadius: PropTypes.string,
+  trackHeight: PropTypes.number,
+  trackRadius: PropTypes.string
+};
 
 export default RangeSlider;

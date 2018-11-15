@@ -78,7 +78,7 @@ class Masonry extends Component {
         {...this.props}
       >
         {React.Children.map(children, child => (
-          <div>
+          <div key={child.key}>
             {child}
             <ReactResizeDetector
               handleHeight

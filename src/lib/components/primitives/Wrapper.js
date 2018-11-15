@@ -5,8 +5,8 @@ import Box from "./Box";
 
 const Wrapper = styled(Box)`
   position: relative;
-  width: 85%;
-  max-width: ${props => props.theme.globals.wrapperWidth || "1000px"};
+  width: ${props => props.theme.globals.wrapperWidth || "85%"};
+  max-width: ${props => props.theme.globals.wrapperMaxWidth || "1000px"};
   margin: 0 auto;
 `;
 
