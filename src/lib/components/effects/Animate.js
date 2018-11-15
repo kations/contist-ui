@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
 import styled, { keyframes } from "styled-components";
+import VisibilitySensor from "react-visibility-sensor";
 
 import { propsToStyle } from "../../utils";
-
-const VisibilitySensor = require("react-visibility-sensor");
 
 const rotate = p => keyframes`
   0% {

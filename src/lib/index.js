@@ -1,6 +1,6 @@
 import { parseToRgb, darken, lighten, rgba, setLightness } from "polished";
 
-const VisibilitySensor = require("react-visibility-sensor");
+import VisibilitySensor from "react-visibility-sensor";
 
 export { VisibilitySensor, parseToRgb, darken, lighten, setLightness, rgba };
 
