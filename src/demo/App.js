@@ -29,7 +29,8 @@ import {
   Masonry,
   Swiper,
   ListItem,
-  RangeSlider
+  RangeSlider,
+  OnMouseOver
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -168,11 +169,23 @@ class App extends Component {
             </Wrapper>
           </Flex>
 
+          <OnMouseOver>
+            {isOver => (
+              <Headline as="h1" color="primary" maxWidth="600px" animated>
+                React + Styled components mobile first UI system{" "}
+                {isOver && "entered"}
+              </Headline>
+            )}
+          </OnMouseOver>
+
           <Section>
             <Wrapper>
               <RangeSlider
                 value={this.state.value}
-                onChange={value => this.setState({ value: value })}
+                onChange={value => {
+                  console.log(value);
+                  this.setState({ value: value });
+                }}
               />
               <RangeSlider value={20} />
               <Masonry>

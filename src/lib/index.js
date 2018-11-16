@@ -28,6 +28,7 @@ export { default as DefaultTheme } from "./components/DefaultTheme";
 //helper
 export { default as State } from "./components/helper/State";
 export { default as Delay } from "./components/helper/Delay";
+export { default as OnMouseOver } from "./components/helper/OnMouseOver";
 
 //primitives
 export { default as Flex } from "./components/primitives/Flex";

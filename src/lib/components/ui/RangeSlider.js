@@ -159,20 +159,19 @@ class RangeSlider extends Component {
     max: 100
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activeIndex: 0,
-      rowHeight: 1
+      rowHeight: 1,
+      value: props.value
     };
   }
 
   render() {
-    const { min, max, value, onChange, trackRadius, thumbSize } = this.props;
-
+    const { min, max, onChange, trackRadius, thumbSize } = this.props;
+    const { value } = this.state;
     var steps = Array.from(Array(max / 10 + 1).keys());
-
-    console.log("steps", value);
 
     const settings = {
       thumbSize: thumbSize,
@@ -219,7 +218,8 @@ class RangeSlider extends Component {
             min={min}
             max={max}
             value={value}
-            onChange={e => onChange(parseFloat(e.target.value))}
+            onMouseUp={() => onChange(value)}
+            onChange={e => this.setState({ value: parseFloat(e.target.value) })}
           />
         ) : (
           value.map((val, index) => (
@@ -229,6 +229,7 @@ class RangeSlider extends Component {
               min={min}
               max={max}
               value={value[index]}
+              onMouseUp={() => onChange(value)}
               onChange={e => {
                 if (value[index - 1] && e.target.value < value[index - 1]) {
                   return false;
@@ -240,7 +241,7 @@ class RangeSlider extends Component {
                 } else {
                   value[index] = parseFloat(e.target.value);
                 }
-                onChange(value);
+                this.setState({ value: value });
               }}
               {...settings}
             />

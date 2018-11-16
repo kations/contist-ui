@@ -112,7 +112,12 @@ const styleProps = {
     PropTypes.string,
     PropTypes.object
   ]),
-  backgroundOrigin: PropTypes.oneOfType([
+  backgroundClip: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  clipPath: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
     PropTypes.object
