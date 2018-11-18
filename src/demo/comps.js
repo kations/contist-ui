@@ -309,7 +309,7 @@ export const ui = [
   },
   {
     name: "<Icon />",
-    comp: <Icon size={50} type="burger" />,
+    comp: <Icon size={50} color="primary" type="burger" />,
     preview: `
     <State initialState={{ type: "burger" }} persist="icon-state">
       {({ state, setState }) => (

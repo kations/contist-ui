@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Box from "../primitives/Box";
-import { getColor } from "../../utils";
+import { getColorString } from "../../utils";
 
 const IconStyle = styled(Box)`
   position: relative;
@@ -30,7 +30,8 @@ const IconStyle = styled(Box)`
     right: 0;
     margin: 0 auto;
     top: 0;
-    background: ${p => p.theme.colors.primary};
+    background: ${p =>
+      getColorString(p.color, p.theme) || p.theme.colors.primary};
     width: 100%;
     height: ${p => p.lineWidth}px;
     display: block;
