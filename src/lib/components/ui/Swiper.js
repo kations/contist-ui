@@ -6,6 +6,12 @@ const SliderContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+`;
+
+const TrackContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 `;
 
@@ -175,26 +181,28 @@ export class Swiper extends React.Component {
   renderItems = renderItem => {
     const { horizontal, slideWidth, gap } = this.props;
     return (
-      <SliderTrack
-        horizontal={horizontal}
-        slideWidth={slideWidth}
-        ref={this.setRef}
-      >
-        {this.props.data &&
-          this.props.data.map((item, index) => {
-            return (
-              <Slide
-                key={index}
-                className={this.state.activeSlide === index && "active"}
-                horizontal={horizontal}
-                slideWidth={slideWidth}
-                gap={gap}
-              >
-                {renderItem(item, this.state.activeSlide === index, index)}
-              </Slide>
-            );
-          })}
-      </SliderTrack>
+      <TrackContainer>
+        <SliderTrack
+          horizontal={horizontal}
+          slideWidth={slideWidth}
+          ref={this.setRef}
+        >
+          {this.props.data &&
+            this.props.data.map((item, index) => {
+              return (
+                <Slide
+                  key={index}
+                  className={this.state.activeSlide === index && "active"}
+                  horizontal={horizontal}
+                  slideWidth={slideWidth}
+                  gap={gap}
+                >
+                  {renderItem(item, this.state.activeSlide === index, index)}
+                </Slide>
+              );
+            })}
+        </SliderTrack>
+      </TrackContainer>
     );
   };
 
