@@ -30,7 +30,8 @@ import {
   Swiper,
   ListItem,
   RangeSlider,
-  OnMouseOver
+  OnMouseOver,
+  Pill
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -168,6 +169,8 @@ class App extends Component {
               </Button>
             </Wrapper>
           </Flex>
+
+          <Pill pillColor="#ccc">test</Pill>
 
           <OnMouseOver>
             {isOver => (

@@ -22,6 +22,8 @@ export { default as Swiper } from "./components/ui/Swiper";
 export { default as Masonry } from "./components/ui/Masonry";
 export { default as ListItem } from "./components/ui/ListItem";
 export { default as RangeSlider } from "./components/ui/RangeSlider";
+export { default as Pill } from "./components/ui/Pill";
+
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";
 
