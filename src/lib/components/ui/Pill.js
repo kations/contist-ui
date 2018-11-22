@@ -4,15 +4,15 @@ import Box from "../primitives/Box";
 import { getColorString, getColor } from "../../utils";
 
 const pillSizes = {
-  large: " 1rem 2rem",
-  medium: " 0.5rem 1rem",
-  small: " 0.25rem 0.5rem"
+  l: " 1rem 2rem",
+  m: " 0.5rem 1rem",
+  s: " 0.25rem 0.5rem"
 };
 
 const fontSizes = {
-  large: " 1rem",
-  medium: " 0.9rem",
-  small: " 0.8rem"
+  l: " 1rem",
+  m: " 0.9rem",
+  s: " 0.8rem"
 };
 
 const Pill = styled(Box)`
@@ -32,7 +32,7 @@ const Pill = styled(Box)`
     if (p.invert) {
       return color;
     } else {
-      return getColor(p.pillColor);
+      return getColor(color);
     }
   }};
   border-radius: 25px;
@@ -40,7 +40,7 @@ const Pill = styled(Box)`
 `;
 
 Pill.defaultProps = {
-  size: "medium"
+  size: "m"
 };
 
 export default Pill;

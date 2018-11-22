@@ -31,7 +31,8 @@ import {
   ListItem,
   RangeSlider,
   OnMouseOver,
-  Pill
+  Pill,
+  Table
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider } from "styled-components";
@@ -170,19 +171,46 @@ class App extends Component {
             </Wrapper>
           </Flex>
 
-          <Pill pillColor="#ccc">test</Pill>
-
-          <OnMouseOver>
-            {isOver => (
-              <Headline as="h1" color="primary" maxWidth="600px" animated>
-                React + Styled components mobile first UI system{" "}
-                {isOver && "entered"}
-              </Headline>
-            )}
-          </OnMouseOver>
-
           <Section>
             <Wrapper>
+              <Pill>test</Pill>
+
+              <Table width="100%" id="customers">
+                <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+                </tr>
+                <tr>
+                  <td>Alfreds Futterkiste</td>
+                  <td>Maria Anders</td>
+                  <td>Germany</td>
+                </tr>
+                <tr>
+                  <td>Berglunds snabbköp</td>
+                  <td>Christina Berglund</td>
+                  <td>Sweden</td>
+                </tr>
+                <tr>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                </tr>
+                <tr>
+                  <td>Ernst Handel</td>
+                  <td>Roland Mendel</td>
+                  <td>Austria</td>
+                </tr>
+              </Table>
+
+              <OnMouseOver>
+                {isOver => (
+                  <Headline as="h1" color="primary" maxWidth="600px" animated>
+                    React + Styled components mobile first UI system{" "}
+                    {isOver && "entered"}
+                  </Headline>
+                )}
+              </OnMouseOver>
               <RangeSlider
                 value={this.state.value}
                 onChange={value => {

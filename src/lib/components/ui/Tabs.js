@@ -4,6 +4,7 @@ import { setLightness } from "polished";
 
 import Animate from "../effects/Animate";
 import Box from "../primitives/Box";
+import Swiper from "./Swiper";
 
 const Tabs = styled(Box)`
   width: 100%;
@@ -80,6 +81,8 @@ class TabsView extends Component {
 
     const activeIndex = this.state.activeIndex;
 
+    console.log(React.Children);
+
     return (
       <Fragment>
         <Tabs style={style} radio={radio} {...this.props}>
@@ -106,14 +109,30 @@ class TabsView extends Component {
             }}
           />
         </Tabs>
-        {React.Children.map(children, (child, index) => {
-          if (index !== activeIndex) return null;
-          return (
-            <Animate isVisible>
-              <TabContent>{child}</TabContent>
-            </Animate>
-          );
-        })}
+        <Swiper
+          slideWidth="100%"
+          gap={0}
+          activeSlide={activeIndex}
+          data={React.Children.map(children, (child, index) => child)}
+          onChangeSlide={activeSlide =>
+            this.setState({ activeIndex: activeSlide })
+          }
+        >
+          {({
+            activeSlide,
+            isScrolling,
+            nextSlide,
+            prevSlide,
+            scrollToIndex,
+            renderItems
+          }) => (
+            <Fragment>
+              {renderItems((item, active, index) => (
+                <Fragment>{item}</Fragment>
+              ))}
+            </Fragment>
+          )}
+        </Swiper>
       </Fragment>
     );
   }

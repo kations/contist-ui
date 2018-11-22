@@ -160,6 +160,21 @@ export class Swiper extends React.Component {
     }
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.activeSlide !== this.props.activeSlide) {
+      this.scrollToIndex(nextProps.activeSlide);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.activeSlide !== this.state.activeSlide &&
+      this.props.onChangeSlide
+    ) {
+      this.props.onChangeSlide(this.state.activeSlide);
+    }
+  }
+
   scrollToIndex = index => {
     let scrollWidth = this.props.horizontal
       ? this.slider.scrollWidth
