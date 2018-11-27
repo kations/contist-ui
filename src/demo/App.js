@@ -115,6 +115,7 @@ class App extends Component {
         delay={index * 100}
         onVisible
         stayVisible
+        key={index}
       >
         <Box
           onClick={() =>
@@ -226,6 +227,7 @@ class App extends Component {
                       delay={index * 100}
                       onVisible
                       stayVisible
+                      key={index}
                     >
                       <img src={item} alt="Masonary Demo"/>
                     </Animate>
