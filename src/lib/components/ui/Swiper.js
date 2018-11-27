@@ -1,6 +1,5 @@
-import React, { Component, Children } from "react";
+import React from "react";
 import styled from "styled-components";
-import Animate from "../effects/Animate";
 
 const SliderContainer = styled.div`
   position: relative;

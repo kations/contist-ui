@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import { propsToStyle, styleProps } from "../../utils";
+import { styleProps } from "../../utils";
 
 import Box from "../primitives/Box";
 

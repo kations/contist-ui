@@ -16,7 +16,6 @@ const StyledHeadline = styled(Box)`
 const parseText = (text: string, type: string) => {
   if (typeof text !== "string") return text;
   return text.split(" ").map(word => word.split(""));
-  return text.split("");
 };
 
 class Headline extends React.Component {

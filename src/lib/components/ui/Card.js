@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { rgba, darken, lighten, setLightness } from "polished";
+import { rgba, setLightness } from "polished";
 
 import Box from "../primitives/Box";
-import { getColor } from "../../utils";
 
 const Card = styled(Box)`
   background: ${p => p.theme.colors.light}

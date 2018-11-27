@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import { createPortal } from "react-dom";
+
 
 import Fixed from "../primitives/Fixed";
 import Box from "../primitives/Box";
@@ -9,7 +9,7 @@ import Portal from "../helper/Portal";
 import Delay from "../helper/Delay";
 
 import Animate from "../effects/Animate";
-import { getColor } from "../../utils";
+
 
 const Backdrop = styled(Fixed)`
   left: 0;
@@ -48,14 +48,14 @@ class Overlay extends Component {
   componentDidUpdate(prevProps) {
     var modalCount;
     if (prevProps.visible && !this.props.visible) {
-      modalCount = parseInt(document.body.getAttribute("modal-count"));
+      modalCount = parseInt(document.body.getAttribute("modal-count"), 10);
       if (modalCount === 1) {
         document.body.removeAttribute("style");
       }
       document.body.setAttribute("modal-count", modalCount - 1);
     } else if (!prevProps.visible && this.props.visible) {
       document.body.style.overflow = "hidden";
-      modalCount = parseInt(document.body.getAttribute("modal-count"));
+      modalCount = parseInt(document.body.getAttribute("modal-count"), 10);
       document.body.setAttribute(
         "modal-count",
         isNaN(modalCount) ? 1 : modalCount + 1

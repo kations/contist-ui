@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 
-import { propsToStyle, styleProps } from '../utils';
 //
 // const Form = styled.form`
 //   width: 85%;

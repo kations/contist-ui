@@ -50,8 +50,10 @@ const propsToStyle = (props, theme, noQuery) => {
           )};`;
         }
       }
+        return null;
     });
     styleString += noQuery ? "" : "}";
+    return null;
   });
 
   //console.log('styleString', styleString);

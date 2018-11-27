@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import Box from "../primitives/Box";
 import {
   getColorString,
   getColor,

@@ -12,6 +12,7 @@ const getPropTypes = () => {
   let propTypes = {};
   styleProps.map(tag => {
     propTypes[tag] = propType;
+    return null;
   });
   return propTypes;
 };
