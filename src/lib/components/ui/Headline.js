@@ -13,7 +13,7 @@ const StyledHeadline = styled(Box)`
   line-height: 1.5;
 `;
 
-const parseText = (text: string, type: string) => {
+const parseText = (text) => {
   if (typeof text !== "string") return text;
   return text.split(" ").map(word => word.split(""));
 };
@@ -34,7 +34,6 @@ class Headline extends React.Component {
         as={this.props.as}
         style={this.props.style}
         className={this.props.className}
-        {...this.props}
       >
         {this.props.animated && typeof this.props.children === "string"
           ? parseText(this.props.children, "char").map((word, wordIndex) => (

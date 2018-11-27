@@ -370,9 +370,7 @@ class App extends Component {
                 initialState={{ sdfsf: "sgdffgdgdf" }}
                 validate={values => {
                   console.log(values);
-                  let errors = {};
-
-                  return errors;
+                  return {};
                 }}
                 onSubmit={(values, isSubmmitted, resetForm) => {
                   console.log(values);
@@ -445,6 +443,7 @@ class App extends Component {
                           placeholder="das ist ein test"
                           as="select"
                           value=""
+                          readOnly
                         >
                           <option value="" disabled>
                             Bitte auswählen
