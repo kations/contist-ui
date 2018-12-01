@@ -6,13 +6,13 @@ import { getColorString, getColor } from "../../utils";
 const pillSizes = {
   l: " 1rem 2rem",
   m: " 0.5rem 1rem",
-  s: " 0.25rem 0.5rem"
+  s: " 0.25rem 0.75rem"
 };
 
 const fontSizes = {
   l: " 1rem",
-  m: " 0.9rem",
-  s: " 0.8rem"
+  m: " 0.8rem",
+  s: " 0.6rem"
 };
 
 const Pill = styled(Box)`

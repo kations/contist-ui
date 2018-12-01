@@ -7,9 +7,9 @@ const DefaultTheme = {
   colors: {
     primary: "#455acf",
     secondary: "#6F481E",
-    success: "",
-    danger: "",
-    warning: "",
+    success: "#4CAF50",
+    danger: "#F44336",
+    warning: "#FFEB3B",
     info: "",
     light: "#fff",
     dark: "#231c20",

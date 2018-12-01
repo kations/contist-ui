@@ -171,45 +171,23 @@ class App extends Component {
             </Wrapper>
           </Flex>
 
-          <State initialState={{ modal: true }} persist="heim-handwerk-state">
+          <State initialState={{ lading: false }}>
             {({ state, setState }) => (
-              <Overlay
-                visible={state.modal}
-                handleClose={() => setState({ modal: false })}
-                contentStyle={{ maxWidth: 600 }}
+              <Button
+                size="large"
+                marginTop="3rem"
+                marginLeft="10px"
+                loading={state.loading}
+                onClick={() => {
+                  setState({ loading: true });
+                  setTimeout(() => {
+                    setState({ loading: false });
+                  }, 1000);
+                }}
+                afterLoading="error"
               >
-                <Flex
-                  alignItems="flex-start"
-                  justifyContent="center"
-                  flexDirection="column"
-                  padding={{ mb: "25px", tb: "50px" }}
-                >
-                  <Headline as="h2">
-                    Besucht uns vom 28.11 bis 02.12 auf der Heim + Handwerk in
-                    München.
-                  </Headline>
-                  <div>
-                    <Button
-                      as="a"
-                      href="https://www.heim-handwerk.de"
-                      size="large"
-                      marginTop="3rem"
-                      target="_blank"
-                    >
-                      heim-handwerk.de
-                    </Button>
-                    <Button
-                      outline
-                      size="large"
-                      marginTop="3rem"
-                      marginLeft="10px"
-                      onClick={() => setState({ modal: false })}
-                    >
-                      Schließen
-                    </Button>
-                  </div>
-                </Flex>
-              </Overlay>
+                Abschicken
+              </Button>
             )}
           </State>
 
