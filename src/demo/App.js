@@ -184,7 +184,7 @@ class App extends Component {
                     setState({ loading: false });
                   }, 1000);
                 }}
-                afterLoading="error"
+                afterLoading="success"
               >
                 Abschicken
               </Button>
