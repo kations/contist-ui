@@ -82,6 +82,10 @@ const Button = styled(Box)`
     }
   }
 
+  &:disabled {
+    opacity: 0.5;
+  }
+
   ${p =>
     p.outline ? `box-shadow: 0 0 0 2px ${p.buttonBackground} inset;` : ""};
   ${p => (p.loading ? "color: transparent;" : "")};
