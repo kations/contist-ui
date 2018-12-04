@@ -1,12 +1,31 @@
 import React from "react";
 
+const isLocalStorageNameSupported = () => {
+  var testKey = "test",
+    storage = window.sessionStorage;
+  try {
+    storage.setItem(testKey, "1");
+    storage.removeItem(testKey);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 class State extends React.Component {
   constructor(props) {
     super(props);
 
     var initialState = props.initialState || {};
-    if (props.persist && typeof document !== "undefined") {
-      initialState = localStorage.getItem(props.persist);
+    if (
+      props.persist &&
+      typeof document !== "undefined" &&
+      isLocalStorageNameSupported()
+    ) {
+      var state = localStorage.getItem(this.props.persist);
+      if (state) {
+        initialState = JSON.parse(localStorage.getItem(props.persist));
+      }
     }
     this.initialState = initialState;
     this.state = { ...initialState };
@@ -17,17 +36,13 @@ class State extends React.Component {
   };
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.props.persist) {
+    if (
+      this.props.persist &&
+      nextState !== this.state &&
+      typeof document !== "undefined" &&
+      isLocalStorageNameSupported()
+    ) {
       localStorage.setItem(this.props.persist, JSON.stringify(nextState));
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.persist) {
-      var state = localStorage.getItem(this.props.persist);
-      if (state !== null) {
-        this.setState(JSON.parse(state));
-      }
     }
   }
 

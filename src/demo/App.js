@@ -29,7 +29,8 @@ import {
   RangeSlider,
   OnMouseOver,
   Pill,
-  Table
+  Table,
+  Image
 } from "../lib";
 import Playground from "./components/playground";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -165,6 +166,34 @@ class App extends Component {
               </Button>
             </Wrapper>
           </Flex>
+
+          <State initialState={{ lading: false }}>
+            {({ state, setState }) => (
+              <Button
+                size="large"
+                marginTop="3rem"
+                marginLeft="10px"
+                loading={state.loading}
+                onClick={() => {
+                  setState({ loading: true });
+                  setTimeout(() => {
+                    setState({ loading: false });
+                  }, 1000);
+                }}
+                afterLoading="success"
+              >
+                Abschicken
+              </Button>
+            )}
+          </State>
+
+          <Image
+            width="80px"
+            height="80px"
+            cover
+            margin="0 10px 0 0"
+            src="https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg"
+          />
 
           <Section>
             <Wrapper>

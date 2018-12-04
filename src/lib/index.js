@@ -24,6 +24,7 @@ export { default as ListItem } from "./components/ui/ListItem";
 export { default as RangeSlider } from "./components/ui/RangeSlider";
 export { default as Pill } from "./components/ui/Pill";
 export { default as Table } from "./components/ui/Table";
+export { default as Image } from "./components/ui/Image";
 
 //theme
 export { default as DefaultTheme } from "./components/DefaultTheme";
