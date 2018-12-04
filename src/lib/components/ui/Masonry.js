@@ -15,7 +15,7 @@ const Grid = styled(Box)`
   }
 `;
 
-const throttle = (delay, fn) => {
+/*const throttle = (delay, fn) => {
   let lastCall = 0;
   return function(...args) {
     const now = new Date().getTime();
@@ -25,7 +25,7 @@ const throttle = (delay, fn) => {
     lastCall = now;
     return fn(...args);
   };
-};
+};*/
 
 class Masonry extends Component {
   static defaultProps = {

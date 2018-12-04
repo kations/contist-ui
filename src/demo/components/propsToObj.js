@@ -1,20 +1,20 @@
 // import this to check each of the component's PropTypes against
-import PropTypes from 'prop-types';
+
 
 // // helper method to determine whether a propType method is a particular PropType validator
-const isCorrectPropType = (method, propType) =>
-  method === PropTypes[propType] || method === PropTypes[propType].isRequired;
+/*const isCorrectPropType = (method, propType) =>
+  method === PropTypes[propType] || method === PropTypes[propType].isRequired;*/
 
 // // helper method to determine whether a prop is required or not - if it is required,
 // // it'll be equal to the .isRequired method on the propType.
-const isPropTypeRequired = (method, propType) =>
-  method === PropTypes[propType].isRequired;
+/*const isPropTypeRequired = (method, propType) =>
+  method === PropTypes[propType].isRequired;*/
 
 // // method to determine what PropType a particular prop is. It does this by taking
 // // the PropType validator of a particular prop, and running it against each of the
 // // PropType validators set in the propTypes array. If a match is found, we return
 // // an object of the prop type, and whether it is required or not.
-const getPropInfo = method => {
+/*const getPropInfo = method => {
   // For our example, we've only included these three prop types in the array,
   // as that is what the Badge takes. But as a component library grows, this
   // would need to be updated whenver you add a new component.
@@ -31,7 +31,7 @@ const getPropInfo = method => {
     }
     return obj;
   }, {});
-};
+};*/
 //
 // // this takes all the propTypes (in our example - the value of Badge.propTypes)
 // // and loops through each, and returns a human-readable object containing
@@ -52,13 +52,12 @@ const getPropInfo = method => {
 
 const propTypesToObject = (propTypes, defaultProps) => {
   console.log(propTypes, defaultProps);
-  var arr = Object.keys(propTypes).map((key, index) => {
+  return Object.keys(propTypes).map((key, index) => {
     //console.log(propTypes[key]);
     return {
       key: key,
     };
   });
-  return arr;
 };
 
 export default propTypesToObject;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ReactResizeDetector from "react-resize-detector";
 import { setLightness } from "polished";
 import PropTypes from "prop-types";
 
@@ -243,7 +242,6 @@ class RangeSlider extends Component {
                 }
                 this.setState({ value: value });
               }}
-              {...settings}
             />
           ))
         )}

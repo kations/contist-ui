@@ -100,9 +100,7 @@ class Progress extends Component {
       size,
       progress,
       showPercentage,
-      textColor,
       textStyle,
-      percentSpacing,
       showPercentageSymbol
     } = this.props;
     if (!showPercentage || !progress) return;
@@ -120,22 +118,15 @@ class Progress extends Component {
     const {
       progress,
       size,
-      bgColor,
-      progressColor,
       lineWidth,
-      animate,
       animationDuration,
       loadingDuration,
       roundedStroke,
       responsive,
       onAnimationEnd,
       style,
-      className
     } = this.props;
     const strokeDashoffset = getOffset(this.state.progress || 0);
-    const transition = animate
-      ? `stroke-dashoffset ${animationDuration} ease-out`
-      : null;
     const strokeLinecap = roundedStroke ? "round" : "butt";
     const svgSize = responsive ? "100%" : size;
 

@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { propsToStyle, styleProps } from "../../utils";
 import Box from "../primitives/Box";
 
 const ripple = keyframes`
@@ -11,10 +10,10 @@ const ripple = keyframes`
   }
 `;
 
-const RippleWrapper = styled.div`
+/*const RippleWrapper = styled.div`
   position: relative;
   display: inline-block;
-`;
+`;*/
 
 const RippleEffect = styled(Box)`
   position: absolute;
@@ -86,7 +85,7 @@ class Ripple extends React.Component {
   };
 
   render() {
-    const { children, color } = this.props;
+    //const { children, color } = this.props;
     return (
       <RippleEffect
         className={"Ripple " + (this.state.animate ? "is-reppling" : "")}

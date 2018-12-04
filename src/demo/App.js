@@ -4,7 +4,6 @@ import {
   Wrapper,
   Section,
   Flex,
-  Toolbar,
   Reset,
   Input,
   Label,
@@ -15,7 +14,6 @@ import {
   Button,
   Tilt,
   Ripple,
-  Fixed,
   Animate,
   Grid,
   DefaultTheme,
@@ -28,7 +26,6 @@ import {
   Card,
   Masonry,
   Swiper,
-  ListItem,
   RangeSlider,
   OnMouseOver,
   Pill,
@@ -36,9 +33,7 @@ import {
   Image
 } from "../lib";
 import Playground from "./components/playground";
-import { ThemeProvider } from "styled-components";
-import styled, { createGlobalStyle } from "styled-components";
-import PropTypes from "prop-types";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { ui, primitives, effects } from "./comps";
 console.log("Flex", Avatar);
 
@@ -121,6 +116,7 @@ class App extends Component {
         delay={index * 100}
         onVisible
         stayVisible
+        key={index}
       >
         <Box
           onClick={() =>
@@ -152,7 +148,6 @@ class App extends Component {
         <Fragment>
           <GlobalStyle />
           <Flex
-            background="primary"
             height="90vh"
             alignItems="center"
             background={setLightness(0.85, "#455acf")}
@@ -205,31 +200,33 @@ class App extends Component {
               <Pill>test</Pill>
 
               <Table width="100%" id="customers">
-                <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
-                </tr>
-                <tr>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Berglunds snabbköp</td>
-                  <td>Christina Berglund</td>
-                  <td>Sweden</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Ernst Handel</td>
-                  <td>Roland Mendel</td>
-                  <td>Austria</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                  </tr>
+                  <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                  </tr>
+                  <tr>
+                    <td>Berglunds snabbköp</td>
+                    <td>Christina Berglund</td>
+                    <td>Sweden</td>
+                  </tr>
+                  <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                  </tr>
+                  <tr>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>Austria</td>
+                  </tr>
+                </tbody>
               </Table>
 
               <OnMouseOver>
@@ -259,8 +256,9 @@ class App extends Component {
                       delay={index * 100}
                       onVisible
                       stayVisible
+                      key={index}
                     >
-                      <img src={item} />
+                      <img src={item} alt="Masonary Demo"/>
                     </Animate>
                   );
                 })}
@@ -403,9 +401,7 @@ class App extends Component {
                 initialState={{ sdfsf: "sgdffgdgdf" }}
                 validate={values => {
                   console.log(values);
-                  let errors = {};
-
-                  return errors;
+                  return {};
                 }}
                 onSubmit={(values, isSubmmitted, resetForm) => {
                   console.log(values);
@@ -478,6 +474,7 @@ class App extends Component {
                           placeholder="das ist ein test"
                           as="select"
                           value=""
+                          readOnly
                         >
                           <option value="" disabled>
                             Bitte auswählen

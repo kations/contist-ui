@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 
 class Delay extends React.Component {
   static defaultProps = {
@@ -11,7 +11,7 @@ class Delay extends React.Component {
   };
 
   componentDidMount() {
-    const { mounted, unmount, mount } = this.props;
+    const { mounted, mount } = this.props;
     if (mounted) {
       setTimeout(() => this.setState({ shouldRender: true }), mount);
     }
@@ -28,7 +28,7 @@ class Delay extends React.Component {
 
   render() {
     const { children } = this.props;
-    const childrenWithProps = React.Children.map(children, child =>
+    React.Children.map(children, child =>
       React.cloneElement(child, this.props)
     );
     console.log("this.state.shouldRender ", this.state.shouldRender);

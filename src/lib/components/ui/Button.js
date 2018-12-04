@@ -92,11 +92,11 @@ const Button = styled(Box)`
   ${p => (p.outline ? "background: transparent;" : "")};
 `;
 
-const ButtonProgress = styled(Progress)`
+/*const ButtonProgress = styled(Progress)`
   position: absolute;
   left: 0;
   top: 0;
-`;
+`;*/
 
 class ButtonState extends Component {
   static defaultProps = {

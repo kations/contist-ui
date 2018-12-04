@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { setLightness } from "polished";
 
-import Animate from "../effects/Animate";
 import Box from "../primitives/Box";
 import Swiper from "./Swiper";
 
@@ -49,9 +48,9 @@ const Tab = styled.div`
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
-const TabContent = styled.div`
+/*const TabContent = styled.div`
   width: 100%;
-`;
+`;*/
 
 const Indicator = styled.div`
   position: absolute;

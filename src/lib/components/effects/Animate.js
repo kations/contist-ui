@@ -94,17 +94,13 @@ class Animate extends Component {
   render() {
     const {
       children,
-      css,
-      delay,
       partialVisibility,
-      offset,
-      offsetY,
       isVisible,
       stayVisible,
       onVisible
     } = this.props;
 
-    var visible = this.state.active || isVisible;
+    let visible = this.state.active || isVisible;
 
     if (onVisible) {
       return (

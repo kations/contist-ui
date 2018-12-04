@@ -1,6 +1,5 @@
-import { parseToRgb, darken, lighten, setLightness } from "polished";
+import { parseToRgb, setLightness } from "polished";
 
-import DefaultTheme from "../components/DefaultTheme";
 
 export const getColorString = (color, theme) => {
   let colors = theme.colors;
