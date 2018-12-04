@@ -43,46 +43,31 @@ const Slide = styled.div`
   padding-right: ${p => p.gap}px;
 `;
 
-const scrollTo = (element, to, duration, horizontal) => {
-  var start = horizontal ? element.scrollLeft : element.scrollTop,
-    change = to - start,
-    currentTime = 0,
-    increment = 20;
-
-  var animateScroll = function() {
-    currentTime += increment;
-    var val = Math.easeInOutQuad(currentTime, start, change, duration);
-    if (horizontal) {
-      element.scrollTo(val, 0);
-    } else {
-      element.scrollTo(0, val);
-    }
-
-    if (currentTime < duration) {
-      setTimeout(animateScroll, increment);
-    }
-  };
-  animateScroll();
+const scrollTo = (element, to, horizontal) => {
+  if (horizontal) {
+    element.scrollTo({
+      left: to,
+      behavior: "smooth"
+    });
+  } else {
+    element.scrollTo({
+      top: to,
+      behavior: "smooth"
+    });
+  }
 };
 
-Math.easeInOutQuad = function(t, b, c, d) {
-  t /= d / 2;
-  if (t < 1) return (c / 2) * t * t + b;
-  t--;
-  return (-c / 2) * (t * (t - 2) - 1) + b;
-};
-
-const throttle = (delay, fn) => {
-  let lastCall = 0;
-  return function(...args) {
-    const now = new Date().getTime();
-    if (now - lastCall < delay) {
-      return;
-    }
-    lastCall = now;
-    return fn(...args);
-  };
-};
+// const throttle = (delay, fn) => {
+//   let lastCall = 0;
+//   return function(...args) {
+//     const now = new Date().getTime();
+//     if (now - lastCall < delay) {
+//       return;
+//     }
+//     lastCall = now;
+//     return fn(...args);
+//   };
+// };
 
 export class Swiper extends React.Component {
   static defaultProps = {
@@ -188,7 +173,8 @@ export class Swiper extends React.Component {
       if (this.props.initalSlide !== 0) {
         this.scrollToIndex(this.props.initalSlide);
       }
-      this.slider.addEventListener("scroll", throttle(100, this.onScroll));
+      // this.slider.addEventListener("scroll", throttle(100, this.onScroll));
+      this.slider.addEventListener("scroll", this.onScroll);
     }
   };
 

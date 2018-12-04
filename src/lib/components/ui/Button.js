@@ -179,10 +179,9 @@ class ButtonState extends Component {
           <Progress
             style={{
               position: "absolute",
-              left: 0,
+              left: "50%",
               top: "50%",
-              right: 0,
-              margin: `-${20 / 2} auto 0 auto`
+              margin: `-${20 / 2}px 0 0 -${20 / 2}px`
             }}
             lineWidth={40}
             size={20}
