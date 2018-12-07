@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import Box from "../primitives/Box";
 import Animate from "../effects/Animate";
+import { propsToStyle, styleProps } from "../../utils";
 
 const StyledHeadline = styled(Box)`
   max-width: 100%;
@@ -11,9 +12,11 @@ const StyledHeadline = styled(Box)`
   word-spacing: 2px;
   word-wrap: break-word;
   line-height: 1.5;
+
+  ${p => propsToStyle(p)};
 `;
 
-const parseText = (text) => {
+const parseText = text => {
   if (typeof text !== "string") return text;
   return text.split(" ").map(word => word.split(""));
 };
@@ -34,6 +37,7 @@ class Headline extends React.Component {
         as={this.props.as}
         style={this.props.style}
         className={this.props.className}
+        {...this.props}
       >
         {this.props.animated && typeof this.props.children === "string"
           ? parseText(this.props.children, "char").map((word, wordIndex) => (
@@ -75,7 +79,8 @@ class Headline extends React.Component {
 }
 
 Headline.propTypes = {
-  onVisible: PropTypes.bool
+  onVisible: PropTypes.bool,
+  ...styleProps
 };
 
 export default Headline;

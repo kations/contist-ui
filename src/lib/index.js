@@ -1,8 +1,17 @@
 import { parseToRgb, darken, lighten, rgba, setLightness } from "polished";
 
 import VisibilitySensor from "react-visibility-sensor";
+import ReactResizeDetector from "react-resize-detector";
 
-export { VisibilitySensor, parseToRgb, darken, lighten, setLightness, rgba };
+export {
+  ReactResizeDetector,
+  VisibilitySensor,
+  parseToRgb,
+  darken,
+  lighten,
+  setLightness,
+  rgba
+};
 
 export { default as Toolbar } from "./components/Toolbar";
 export { default as Reset } from "./components/Reset";

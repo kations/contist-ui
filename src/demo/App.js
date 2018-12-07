@@ -199,6 +199,106 @@ class App extends Component {
             <Wrapper>
               <Pill>test</Pill>
 
+              <State
+                initialState={{
+                  show: false,
+                  position: undefined,
+                  full: false,
+                  from: undefined,
+                  fullHeight: false
+                }}
+              >
+                {({ state, setState }) => (
+                  <Fragment>
+                    <Headline as="h3" marginBottom={50} animated>
+                      Overlay
+                    </Headline>
+                    <Grid gap="10px">
+                      <Button
+                        onClick={() =>
+                          setState({
+                            show: !state.show,
+                            position: "center",
+                            full: false,
+                            from: undefined,
+                            fullHeight: false
+                          })
+                        }
+                      >
+                        Show Overlay
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setState({
+                            show: !state.show,
+                            position: "center",
+                            fullHeight: false,
+                            full: false,
+                            from: {
+                              transform: "translate3d(0, 0, 0) scale(0)",
+                              opacity: 0
+                            }
+                          })
+                        }
+                      >
+                        Change Animation
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setState({
+                            show: !state.show,
+                            position: "right",
+                            full: false,
+                            fullHeight: true,
+                            from: {
+                              transform: "translate3d(300px, 0, 0)"
+                            }
+                          })
+                        }
+                      >
+                        As sidebar
+                      </Button>
+                      <Button
+                        onClick={() =>
+                          setState({
+                            show: !state.show,
+                            position: "center",
+                            full: true,
+                            fullHeight: false,
+                            from: undefined
+                          })
+                        }
+                      >
+                        Full Overlay
+                      </Button>
+                    </Grid>
+                    <Overlay
+                      visible={state.show}
+                      full={state.full}
+                      horizontal={state.position}
+                      from={state.from}
+                      fullHeight={state.fullHeight}
+                      handleClose={() => setState({ show: !state.show })}
+                      contentStyle={{
+                        width: 300
+                      }}
+                    >
+                      <Button onClick={() => setState({ show: !state.show })}>
+                        Close
+                      </Button>
+                      <p>
+                        Content Delivery API is written in GraphQL. GraphQL
+                        clearly defines the operations supported by the API,
+                        including input arguments and possible responses,
+                        offering an unfailing contract that specifies the
+                        capabilities of an API. Your clients can retrieve
+                        exactly the data they need from the API.
+                      </p>
+                    </Overlay>
+                  </Fragment>
+                )}
+              </State>
+
               <Table width="100%" id="customers">
                 <tbody>
                   <tr>
@@ -258,7 +358,7 @@ class App extends Component {
                       stayVisible
                       key={index}
                     >
-                      <img src={item} alt="Masonary Demo"/>
+                      <img src={item} alt="Masonary Demo" />
                     </Animate>
                   );
                 })}

@@ -79,18 +79,22 @@ class Masonry extends Component {
       >
         {React.Children.map(children, child => (
           <div key={child.key}>
-            {child}
-            <ReactResizeDetector
-              handleHeight
-              onResize={() => {
-                if (this.slider) this.resizeGrid(this.slider);
-              }}
-            />
+            <div>
+              {child}
+              <ReactResizeDetector
+                handleHeight
+                onResize={() => {
+                  console.log("resize item");
+                  if (this.slider) this.resizeGrid(this.slider);
+                }}
+              />
+            </div>
           </div>
         ))}
         <ReactResizeDetector
           handleWidth
           onResize={() => {
+            console.log("resize grid");
             if (this.slider) this.resizeGrid(this.slider);
           }}
         />

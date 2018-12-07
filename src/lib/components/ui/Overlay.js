@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-
 import Fixed from "../primitives/Fixed";
 import Box from "../primitives/Box";
 
@@ -10,6 +9,13 @@ import Delay from "../helper/Delay";
 
 import Animate from "../effects/Animate";
 
+import { propsToStyle, styleProps } from "../../utils";
+
+const positions = {
+  center: "center",
+  left: "flex-start",
+  right: "flex-end"
+};
 
 const Backdrop = styled(Fixed)`
   left: 0;
@@ -19,30 +25,33 @@ const Backdrop = styled(Fixed)`
   background: ${p => p.theme.globals.backdropColor || "rgba(0,0,0,0.4)"};
   display: flex;
   align-items: safe center;
-  justify-content: center;
+  justify-content: ${p => positions[p.horizontal]};
   xalign-items: center;
-  xjustify-content: flex-start;
+  xjustify-content: center;
   z-index: 500;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  ${p => propsToStyle(p.backdropStyle)}
 `;
 
 const OverlayContent = styled(Box)`
   min-width: 300px;
   max-width: 100vw;
   z-index: 600;
-  margin: auto;
+  margin: auto 0;
+  transition: 0.25s ease-in-out;
   padding: ${p => (p.noBg ? "0px" : "30px")};
   background: ${p => (p.noBg ? "transparent" : "#FFF")};
   box-shadow: ${p => (p.noBg ? "none" : "0 10px 20px rgba(91, 107, 174, 0.1)")};
-  ${p => (p.full || p.fullHeight ? "height: 100vh;" : "")};
-  ${p => (p.full || p.fullWidth ? "width: 100vw;" : "")};
+  ${p => (p.full || p.fullHeight ? "min-height: 100vh;" : "")};
+  ${p => (p.full || p.fullWidth ? "min-width: 100vw;" : "")};
+  ${p => propsToStyle(p.contentStyle)}
 `;
 
 class Overlay extends Component {
   static defaultProps = {
     from: { transform: "translate3d(0, 100px, 0)", opacity: 0 },
-    position: "center"
+    horizontal: "center"
   };
 
   componentDidUpdate(prevProps) {
@@ -69,8 +78,9 @@ class Overlay extends Component {
       backdropStyle,
       visible,
       handleClose,
-      position,
+      horizontal,
       from,
+      to,
       children,
       full,
       fullHeight,
@@ -90,13 +100,13 @@ class Overlay extends Component {
           <Animate isVisible={visible}>
             <Backdrop
               onClick={handleClose}
-              justifyContent={justifyContent[position]}
-              style={backdropStyle}
+              backdropStyle={backdropStyle}
+              horizontal={horizontal}
             >
-              <Animate from={from} isVisible={visible}>
+              <Animate from={from} to={to} isVisible={visible}>
                 <OverlayContent
                   onClick={e => e.stopPropagation()}
-                  style={contentStyle}
+                  contentStyle={contentStyle}
                   full={full}
                   fullHeight={fullHeight}
                   fullWidth={fullWidth}
