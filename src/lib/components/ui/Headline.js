@@ -32,12 +32,13 @@ class Headline extends React.Component {
     duration: 1000
   };
   render() {
+    const { onVisible, ...rest } = this.props;
     return (
       <StyledHeadline
         as={this.props.as}
         style={this.props.style}
         className={this.props.className}
-        {...this.props}
+        {...rest}
       >
         {this.props.animated && typeof this.props.children === "string"
           ? parseText(this.props.children, "char").map((word, wordIndex) => (
